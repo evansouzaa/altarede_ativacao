@@ -1,5 +1,7 @@
 import { useForm } from "react-hook-form";
 import { FormStyled } from "../styles";
+import { FormButtonNav } from "../FormButtonsNav";
+import { useFormData } from "../../../context/formContext";
 
 type Props = {
   currentStep: number,
@@ -9,13 +11,15 @@ type Props = {
 
 export const FormDocNetwork = ({ nextFormStep, prevFormStep, currentStep }: Props) => {
 
-  const { register, handleSubmit } = useForm({ mode: "all" })
+  const { register, handleSubmit } = useForm()
+
+  const { setFormValues } = useFormData()
 
   const onSubmit = (data: any, e: any) => {
     e.preventDefault()
-    nextFormStep()
-
     console.log(data)
+    setFormValues(data)
+    nextFormStep()
   }
 
   return (
@@ -48,8 +52,8 @@ export const FormDocNetwork = ({ nextFormStep, prevFormStep, currentStep }: Prop
           <option value="3">3</option>
         </select>
       </div>
-      <button type="button" onClick={prevFormStep} disabled={currentStep <= 0} >Voltar</button>
-      <button disabled={currentStep >= 2}>Proximo</button>
+      <br />
+      <FormButtonNav currentStep={currentStep} prevFormStep={prevFormStep} />
     </FormStyled>
   )
 }

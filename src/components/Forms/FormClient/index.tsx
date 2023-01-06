@@ -1,4 +1,6 @@
 import { useForm } from "react-hook-form";
+import { useFormData } from "../../../context/formContext";
+import { FormButtonNav } from "../FormButtonsNav";
 import { FormStyled } from "../styles";
 
 type Props = {
@@ -11,10 +13,12 @@ export const FormClient = ({ nextFormStep, prevFormStep, currentStep }: Props) =
 
   const { register, handleSubmit } = useForm()
 
+  const { setFormValues } = useFormData()
+
   const onSubmit = (data: any, e: any) => {
     e.preventDefault()
     console.log(data)
-
+    setFormValues(data)
     nextFormStep()
   }
 
@@ -38,8 +42,8 @@ export const FormClient = ({ nextFormStep, prevFormStep, currentStep }: Props) =
           <option value="3">3</option>
         </select>
       </div>
-      <button type="button" onClick={prevFormStep} disabled={currentStep <= 0} >Voltar</button>
-      <button disabled={currentStep >= 1}>Proximo</button>
+      <br />
+      <FormButtonNav currentStep={currentStep} prevFormStep={prevFormStep} />
     </FormStyled>
   )
 }

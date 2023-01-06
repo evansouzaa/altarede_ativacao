@@ -1,5 +1,7 @@
 import { useForm } from "react-hook-form";
 import { FormStyled } from "../styles";
+import { FormButtonNav } from "../FormButtonsNav";
+import { useFormData } from "../../../context/formContext";
 
 type Props = {
   currentStep: number,
@@ -8,13 +10,14 @@ type Props = {
 }
 export const FormInventoryNetwork = ({ nextFormStep, prevFormStep, currentStep }: Props) => {
 
-  const { register, handleSubmit } = useForm({ mode: "all" })
+  const { register, handleSubmit } = useForm()
+  const { setFormValues } = useFormData()
 
   const onSubmit = (data: any, e: any) => {
     e.preventDefault()
-    nextFormStep()
-
     console.log(data)
+    setFormValues(data)
+    nextFormStep()
   }
 
   return (
@@ -46,8 +49,7 @@ export const FormInventoryNetwork = ({ nextFormStep, prevFormStep, currentStep }
         <label htmlFor="serial_ont">Serial Roteador</label>
         <input type="text" placeholder='Digite o serial_ont' id='serial_ont' {...register("serial_ont")} required />
       </div>
-      <button type="button" onClick={prevFormStep} disabled={currentStep <= 1} >Voltar</button>
-      <button disabled={currentStep >= 3}>Proximo</button>
+      <FormButtonNav currentStep={currentStep} prevFormStep={prevFormStep} />
     </FormStyled>
   )
 }

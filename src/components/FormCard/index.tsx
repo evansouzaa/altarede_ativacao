@@ -1,21 +1,46 @@
-import { ReactNode } from "react";
+import { ReactNode, useState } from "react";
+import FormProvider from "../../context/formContext";
+import { FormClient, FormDocNetwork, FormInventoryNetwork } from '../Forms';
+import { FormCompleted } from "../Forms/FormComplete";
 
 type Props = {
-  children: ReactNode,
-  currentStep: number,
-  nextFormStep: () => void,
-  prevFormStep: () => void
+  children?: ReactNode
+  nStep: number
 }
 
-export default function FormCard({ children, currentStep, nextFormStep, prevFormStep }: Props) {
+export default function FormCard({ children, nStep }: Props) {
+  const [formStep, setFormStep] = useState(0);
+
+  const nextFormStep = () => setFormStep((currentStep) => currentStep + 1);
+  const prevFormStep = () => setFormStep((currentStep) => currentStep - 1);
 
   return (
     <div>
-      <span>Step {currentStep + 1} of 3</span>
+      <FormProvider>
+        <span>Passo {formStep + 1} de {nStep}</span>
 
-      {children}
+        {children}
 
-      <hr />
+        <FormClient
+          prevFormStep={prevFormStep}
+          currentStep={formStep}
+          nextFormStep={nextFormStep}
+        />
+        <FormDocNetwork
+          prevFormStep={prevFormStep}
+          currentStep={formStep}
+          nextFormStep={nextFormStep}
+        />
+        <FormInventoryNetwork
+          prevFormStep={prevFormStep}
+          currentStep={formStep}
+          nextFormStep={nextFormStep}
+        />
+        <FormCompleted
+          prevFormStep={prevFormStep}
+          currentStep={formStep}
+        />
+      </FormProvider>
     </div>
   );
 }
