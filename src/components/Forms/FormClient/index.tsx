@@ -17,7 +17,6 @@ export const FormClient = ({ nextFormStep, prevFormStep, currentStep }: Props) =
 
   const onSubmit = (data: any, e: any) => {
     e.preventDefault()
-    console.log(data)
     setFormValues(data)
     nextFormStep()
   }

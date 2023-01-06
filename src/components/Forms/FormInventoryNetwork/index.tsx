@@ -15,7 +15,6 @@ export const FormInventoryNetwork = ({ nextFormStep, prevFormStep, currentStep }
 
   const onSubmit = (data: any, e: any) => {
     e.preventDefault()
-    console.log(data)
     setFormValues(data)
     nextFormStep()
   }

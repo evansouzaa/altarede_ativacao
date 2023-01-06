@@ -1,6 +1,6 @@
 import { useState, createContext, useContext, ReactNode } from "react";
 
-//type a form context
+//type form context
 type ChildrenPropsType = {
     children: ReactNode
 }
@@ -25,6 +25,7 @@ export default function FormProvider({ children } :ChildrenPropsType) {
     }));
   };
   
+  console.log(data)
   return (
     <FormContext.Provider value={{ data, setFormValues }}>
       {children}

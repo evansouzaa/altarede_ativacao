@@ -17,7 +17,6 @@ export const FormDocNetwork = ({ nextFormStep, prevFormStep, currentStep }: Prop
 
   const onSubmit = (data: any, e: any) => {
     e.preventDefault()
-    console.log(data)
     setFormValues(data)
     nextFormStep()
   }
