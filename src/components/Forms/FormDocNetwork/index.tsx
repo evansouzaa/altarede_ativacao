@@ -2,14 +2,12 @@ import { useForm } from "react-hook-form";
 import { FormStyled } from "../styles";
 import { FormButtonNav } from "../FormButtonsNav";
 import { useFormData } from "../../../context/formContext";
+import { formConfig } from "../../../config/formConfig";
 
-type Props = {
-  currentStep: number,
-  nextFormStep: () => void,
-  prevFormStep: () => void
-}
+//types
+import { FormStepTypes } from "../../../types/types";
 
-export const FormDocNetwork = ({ nextFormStep, prevFormStep, currentStep }: Props) => {
+export const FormDocNetwork = ({ nextFormStep, prevFormStep, currentStep }: FormStepTypes) => {
 
   const { register, handleSubmit } = useForm()
 
@@ -23,35 +21,47 @@ export const FormDocNetwork = ({ nextFormStep, prevFormStep, currentStep }: Prop
 
   return (
     <FormStyled onSubmit={handleSubmit(onSubmit)} style={currentStep == 1 ? {} : { display: 'none' }}>
-      <h3>Documentação de rede</h3>
+      <h5>Documentação de rede</h5>
       <div>
-        <label htmlFor="estacao">Selecione a Estação</label>
-        <select placeholder='selecione o estacao' id='estacao' {...register("estacao")} required>
+        <label htmlFor="estacao">Estação</label>
+        <select className="form-control" placeholder='selecione o estacao' id='estacao' {...register("estacao")} required>
           <option value="">Selecione...</option>
-          <option value="1">EST1</option>
-          <option value="2">EST2</option>
-          <option value="3">EST3</option>
+          {formConfig.estacao.map((item, index) => (
+            <option value={index} key={index} >{item}</option>
+          ))}
         </select>
       </div>
       <div>
-        <label htmlFor="area">Selecione a Area</label>
-        <select placeholder='selecione o area' id='area' {...register("area")} required>
+        <label htmlFor="area">Area</label>
+        <select className="form-control" placeholder='selecione o area' id='area' {...register("area")} required>
           <option value="">Selecione...</option>
-          <option value="1">A1</option>
-          <option value="2">A2</option>
-          <option value="3">A3</option>
+          {formConfig.area.map((item, index) => (
+            <option value={index} key={index} >A{item}</option>
+          ))}
         </select>
       </div>
       <div>
-        <label htmlFor="cto">Selecione a Cto</label>
-        <select placeholder='selecione o cto' id='cto' {...register("cto")} required>
+        <label htmlFor="cto">Cto</label>
+        <select className="form-control" placeholder='selecione o cto' id='cto' {...register("cto")} required>
           <option value="">Selecione...</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
+          {formConfig.cto.map((item, index) => (
+            <option value={index} key={index} >{item}</option>
+          ))}
         </select>
       </div>
-      <br />
+      <div>
+        <label htmlFor="porta">Porta</label>
+        <select className="form-control" placeholder='selecione a porta' id='porta' {...register("porta")} required>
+          <option value="">Selecione...</option>
+          {formConfig.porta.map((item, index) => (
+            <option value={index} key={index} >{item}</option>
+          ))}
+        </select>
+      </div>
+      <div>
+        <label htmlFor="potencia_cto">Potência cto</label>
+        <input className="form-control" type="number" placeholder="Ex: 23.40" id="potencia_cto" {...register("potencia_cto")} required />
+      </div>
       <FormButtonNav currentStep={currentStep} prevFormStep={prevFormStep} />
     </FormStyled>
   )

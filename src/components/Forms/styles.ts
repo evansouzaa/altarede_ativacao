@@ -1,14 +1,20 @@
 import styled from "styled-components";
 
 export const FormStyled = styled.form`
-    display: flex;
-    flex-direction: column;
+    margin: 10px;
+    
+    input, select {
+        width: 100%;
+    }
 
-    label {
+    .button-box {
         display: flex;
+        justify-content: space-evenly;
+        margin: 15px;
     }
 
-    button {
-        display: inline-block;
+    Button {
+        width: 85px;
     }
+
 `
