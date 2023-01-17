@@ -6,7 +6,7 @@ import { FormStyled } from "../styles";
 //types
 import { FormStepTypes } from "../../../types/types";
 
-export const FormMaterialUsed = ({ nextFormStep, prevFormStep, currentStep }: FormStepTypes) => {
+export const FormMaterialUsed = ({ nextFormStep, prevFormStep, currentStep, orderStep }: FormStepTypes) => {
 
     const { register, handleSubmit } = useForm()
 
@@ -19,58 +19,58 @@ export const FormMaterialUsed = ({ nextFormStep, prevFormStep, currentStep }: Fo
     }
 
     return (
-        <FormStyled onSubmit={handleSubmit(onSubmit)} style={currentStep == 3 ? {} : { display: 'none' }} autoComplete="off">
+        <FormStyled onSubmit={handleSubmit(onSubmit)} style={currentStep == orderStep ? {} : { display: 'none' }} autoComplete="off">
             <h5>Material Utilizado</h5>
             <div className="row">
                 <div className="col mb-1">
                     <label>Fibra</label>
-                    <input type="number" inputMode="numeric" className="input-number form-control" id="fibra" placeholder="0" {...register("fibra", { valueAsNumber: true })} />
+                    <input type="number" inputMode="numeric" className="input-number form-control" id="fibra" placeholder="0" {...register("material_used.fibra", { valueAsNumber: true })} />
                 </div>
                 <div className="col mb-1">
                     <label>Conector APC</label>
-                    <input type="number" inputMode="numeric" className="input-number form-control" id="conector_apc" placeholder="0" {...register("conector_apc", { valueAsNumber: true })} />
+                    <input type="number" inputMode="numeric" className="input-number form-control" id="conector_apc" placeholder="0" {...register("material_used.conector_apc", { valueAsNumber: true })} />
                 </div>
                 <div className="col mb-1">
                     <label>Conector UPC</label>
-                    <input type="number" inputMode="numeric" className="input-number form-control" id="conector_upc" placeholder="0" {...register("conector_upc", { valueAsNumber: true })} />
+                    <input type="number" inputMode="numeric" className="input-number form-control" id="conector_upc" placeholder="0" {...register("material_used.conector_upc", { valueAsNumber: true })} />
                 </div>
             </div>
             <div className="row">
                 <div className="col mb-1">
                     <label>PTO</label>
-                    <input type="number" inputMode="numeric" className="input-number form-control" id="pto" placeholder="0" {...register("pto", { valueAsNumber: true })} />
+                    <input type="number" inputMode="numeric" className="input-number form-control" id="pto" placeholder="0" {...register("material_used.pto", { valueAsNumber: true })} />
                 </div>
                 <div className="col mb-1">
                     <label>Cord. APC/APC</label>
-                    <input type="number" inputMode="numeric" className="input-number form-control" id="cordao_apc-apc" placeholder="0" {...register("cordao_apc-apc", { valueAsNumber: true })} />
+                    <input type="number" inputMode="numeric" className="input-number form-control" id="cordao_apc-apc" placeholder="0" {...register("material_used.cordao_apc-apc", { valueAsNumber: true })} />
                 </div>
                 <div className="col mb-1">
                     <label>Cord. APC/UPC</label>
-                    <input type="number" inputMode="numeric" className="input-number form-control" id="cordao_apc-upc" placeholder="0" {...register("cordao_apc-upc", { valueAsNumber: true })} />
+                    <input type="number" inputMode="numeric" className="input-number form-control" id="cordao_apc-upc" placeholder="0" {...register("material_used.cordao_apc-upc", { valueAsNumber: true })} />
                 </div>
             </div>
             <div className="row">
                 <div className="col mb-1">
                     <label>Alça</label>
-                    <input type="number" inputMode="numeric" className="input-number form-control" id="alca" placeholder="0" {...register("alca", { valueAsNumber: true })} />
+                    <input type="number" inputMode="numeric" className="input-number form-control" id="alca" placeholder="0" {...register("material_used.alca", { valueAsNumber: true })} />
                 </div>
                 <div className="col mb-1">
                     <label>Nylon</label>
-                    <input type="number" inputMode="numeric" className="input-number form-control" id="nylon" placeholder="0" {...register("nylon", { valueAsNumber: true })} />
+                    <input type="number" inputMode="numeric" className="input-number form-control" id="nylon" placeholder="0" {...register("material_used.nylon", { valueAsNumber: true })} />
                 </div>
                 <div className="col mb-1">
                     <label>Fixa Fio</label>
-                    <input type="number" inputMode="numeric" className="input-number form-control" id="fixa_fio" placeholder="0" {...register("fixa_fio", { valueAsNumber: true })} />
+                    <input type="number" inputMode="numeric" className="input-number form-control" id="fixa_fio" placeholder="0" {...register("material_used.fixa_fio", { valueAsNumber: true })} />
                 </div>
             </div>
             <div className="row">
                 <div className="col mb-1">
                     <label>UTP</label>
-                    <input type="number" inputMode="numeric" className="input-number form-control" id="cabo_utp" placeholder="0" {...register("cabo_utp", { valueAsNumber: true })} />
+                    <input type="number" inputMode="numeric" className="input-number form-control" id="cabo_utp" placeholder="0" {...register("material_used.cabo_utp", { valueAsNumber: true })} />
                 </div>
                 <div className="col mb-1">
                     <label>Conector Rj45</label>
-                    <input type="number" inputMode="numeric" className="input-number form-control" id="conector_rj45" placeholder="0" {...register("conector_rj45", { valueAsNumber: true })} />
+                    <input type="number" inputMode="numeric" className="input-number form-control" id="conector_rj45" placeholder="0" {...register("material_used.conector_rj45", { valueAsNumber: true })} />
                 </div>
             </div>
             <FormButtonNav currentStep={currentStep} prevFormStep={prevFormStep} />

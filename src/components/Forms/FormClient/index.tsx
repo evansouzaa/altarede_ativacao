@@ -7,7 +7,7 @@ import { formConfig } from "../../../config/formConfig";
 //types
 import { FormStepTypes } from "../../../types/types";
 
-export const FormClient = ({ nextFormStep, prevFormStep, currentStep }: FormStepTypes) => {
+export const FormClient = ({ nextFormStep, prevFormStep, currentStep, orderStep }: FormStepTypes) => {
 
   const { register, handleSubmit } = useForm()
 
@@ -20,22 +20,22 @@ export const FormClient = ({ nextFormStep, prevFormStep, currentStep }: FormStep
   }
 
   return (
-    <FormStyled onSubmit={handleSubmit(onSubmit)} style={currentStep == 0 ? {} : { display: 'none' }} autoComplete="off">
+    <FormStyled onSubmit={handleSubmit(onSubmit)} style={currentStep == orderStep ? {} : { display: 'none' }} autoComplete="off">
       <h5>Informações do Cliente</h5>
       <div>
         <label htmlFor="name">Nome</label>
-        <input className="form-control" type="text" placeholder="Digite o nome" id="nome" {...register("nome")} required />
+        <input className="form-control" type="text" placeholder="Digite o nome" id="nome" {...register("client.nome")} required />
       </div>
       <div>
         <label htmlFor="login">Login</label>
-        <input className="form-control" type="text" placeholder='Digite o login' id='login' {...register("login")} required />
+        <input className="form-control" type="text" placeholder='Digite o login' id='login' {...register("client.login")} required />
       </div>
       <div>
         <label htmlFor="plano">Plano</label>
-        <select className="form-control" placeholder='selecione o plano' id='plano' {...register("plano")} required>
+        <select className="form-control" placeholder='selecione o plano' id='plano' {...register("client.plano")} required>
           <option value="">Selecione...</option>
           {formConfig.plano.map((item, index) =>(
-            <option value={index} key={index} >{item}</option>
+            <option value={item} key={index} >{item}</option>
           ))}
         </select>
       </div>

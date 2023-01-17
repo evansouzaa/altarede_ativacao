@@ -1,4 +1,4 @@
 export const nStep = {
     startStep: 0,
-    steps: 6
+    steps: 7
 }

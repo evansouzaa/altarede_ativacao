@@ -1,12 +1,12 @@
 import { ReactNode, useState } from "react";
 import FormProvider from "../../context/formContext";
-import { FormClient, FormDocNetwork, FormInventoryNetwork, FormCompleted, FormMaterialUsed, FormClientConfig } from '../Forms';
+import { FormClient, FormDocNetwork, FormInventoryNetwork, FormCompleted, FormMaterialUsed, FormClientConfig, FormLocation } from '../Forms';
 import { FormCardContainer } from "./styles";
 
 type Props = {
   children?: ReactNode
   nStep: number,
-  startStep: number
+  startStep: number,
 }
 
 export default function FormCard({ children, nStep, startStep }: Props) {
@@ -25,32 +25,43 @@ export default function FormCard({ children, nStep, startStep }: Props) {
 
         <FormClient
           prevFormStep={prevFormStep}
-          currentStep={formStep}
           nextFormStep={nextFormStep}
+          currentStep={formStep}
+          orderStep={0}
         />
         <FormDocNetwork
           prevFormStep={prevFormStep}
-          currentStep={formStep}
           nextFormStep={nextFormStep}
+          currentStep={formStep}
+          orderStep={1}
         />
         <FormInventoryNetwork
           prevFormStep={prevFormStep}
-          currentStep={formStep}
           nextFormStep={nextFormStep}
-        />
-        <FormCompleted
-          prevFormStep={prevFormStep}
           currentStep={formStep}
+          orderStep={2}
         />
         <FormMaterialUsed
           prevFormStep={prevFormStep}
-          currentStep={formStep}
           nextFormStep={nextFormStep}
+          currentStep={formStep}
+          orderStep={3}
         />
         <FormClientConfig
           prevFormStep={prevFormStep}
-          currentStep={formStep}
           nextFormStep={nextFormStep}
+          currentStep={formStep}
+          orderStep={4}
+        />
+        <FormLocation
+          prevFormStep={prevFormStep}
+          nextFormStep={nextFormStep}
+          currentStep={formStep}
+          orderStep={5}
+        ></FormLocation>
+        <FormCompleted
+          prevFormStep={prevFormStep}
+          currentStep={formStep}
         />
       </FormCardContainer>
     </FormProvider>
