@@ -1,17 +1,12 @@
-import { ReactNode, useState } from "react";
+import { useState } from "react";
 import FormProvider from "../../context/formContext";
 import { FormClient, FormDocNetwork, FormInventoryNetwork, FormCompleted, FormMaterialUsed, FormClientConfig, FormLocation } from '../Forms';
 import { FormCardContainer } from "./styles";
 
-type Props = {
-  children?: ReactNode
-  nStep: number,
-  startStep: number,
-}
+import { FormCardTypes } from "../../types/types";
 
-export default function FormCard({ children, nStep, startStep }: Props) {
+export default function FormCard({ children, nStep, startStep }: FormCardTypes) {
   const [formStep, setFormStep] = useState(startStep);
-
   const nextFormStep = () => setFormStep((currentStep) => currentStep + 1);
   const prevFormStep = () => setFormStep((currentStep) => currentStep - 1);
 

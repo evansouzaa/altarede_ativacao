@@ -11,7 +11,6 @@ export const FormLocationContainer = styled.div`
         border-radius: 8px;
         margin: 0 auto;
         background-color: #c1c1c1;
-        max-width: 330px;
         width: 100%;
         height: 330px;
     }
@@ -24,7 +23,7 @@ export const FormLocationContainer = styled.div`
     }
 
     Button {
-        margin: 5px auto 0 auto;
-        min-width: 130px;
+        margin: 3px auto 0 auto;
+        min-width: 145px;
     }
 `

@@ -3,12 +3,9 @@ import { useFormData } from "../../../context/formContext";
 import { nStep } from "../../../config/nStep";
 import { FormStyled } from "../styles";
 
-type Props = {
-  currentStep: number,
-  prevFormStep: () => void
-}
+import { FormStepButtonsTypes } from "../../../types/types"
 
-export const FormCompleted = ({ prevFormStep, currentStep }: Props) => {
+export const FormCompleted = ({ prevFormStep, currentStep }: FormStepButtonsTypes) => {
 
   const { data } = useFormData()
 

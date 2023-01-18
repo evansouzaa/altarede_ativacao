@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const FormStyled = styled.form`
-    margin: 10px;
     
     input, select {
         width: 100%;
@@ -17,4 +16,7 @@ export const FormStyled = styled.form`
         width: 85px;
     }
 
+    .mb-1 > label {
+        font-size: 0.7rem;
+    }
 `

@@ -3,22 +3,30 @@ import { FormLocationContainer } from "./styles";
 import { FormStyled } from "../styles";
 import { useState } from "react"
 import { Button } from "react-bootstrap";
-import { useForm, SetFieldValue } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { useFormData } from "../../../context/formContext";
-import { useMapEvents, MapContainer, TileLayer, Marker, useMapEvent } from "react-leaflet"
+import { useMapEvents, MapContainer, TileLayer, Marker } from "react-leaflet"
 import { FormButtonNav } from "../FormButtonsNav";
-
 import { FormStepTypes } from "../../../types/types";
+import { Icon } from "leaflet";
+
+import iconMap from "../../../assets/img/icon_maker.svg"
 
 export const FormLocation = ({ nextFormStep, prevFormStep, currentStep, orderStep }: FormStepTypes) => {
 
-  const { register, handleSubmit } = useForm()
+  const personalIcon = new Icon({
+    iconUrl: iconMap,
+    iconSize: [35, 45],
+    iconAnchor: [30, 40],
+  })
+
+  const { handleSubmit } = useForm()
 
   const { setFormValues } = useFormData()
 
   const onSubmit = (data: any, e: any) => {
     e.preventDefault()
-    setFormValues({position})
+    setFormValues({ position })
     nextFormStep()
   }
 
@@ -28,20 +36,17 @@ export const FormLocation = ({ nextFormStep, prevFormStep, currentStep, orderSte
     const map = useMapEvents({
       click(e) {
         //map.locate()
-        const latlng = map.mouseEventToLatLng(e.originalEvent);
-        setPosition(latlng)
-        console.log("posição clicada " + latlng)
+        setPosition({...map.mouseEventToLatLng(e.originalEvent)})
       },
     })
     return position === null ? null : (
-      <Marker position={position}></Marker>
+      <Marker icon={personalIcon} position={ position }></Marker>
     )
   }
 
   function getPosition() {
     navigator.geolocation.getCurrentPosition(function (position) {
-      const LatLng = { lat: position.coords.latitude, lng: position.coords.longitude }
-      setPosition(LatLng)
+      setPosition({ lat: position.coords.latitude, lng: position.coords.longitude })
     });
 
   }
@@ -54,7 +59,7 @@ export const FormLocation = ({ nextFormStep, prevFormStep, currentStep, orderSte
           {position &&
             <MapContainer style={{ width: "100%", height: "100%" }}
               center={position}
-              zoom={17}
+              zoom={18}
               scrollWheelZoom={true}>
               <TileLayer
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

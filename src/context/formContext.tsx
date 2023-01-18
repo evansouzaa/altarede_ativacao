@@ -19,7 +19,7 @@ export default function FormProvider({ children } :ChildrenPropsType) {
   //create state an function to set values of forms
   const [data, setData] = useState({});
 
-  const setFormValues = (values : FormValuesType) => {
+  function setFormValues(values : FormValuesType) {
     setData((prevValues) => ({
       ...prevValues,
       ...values,

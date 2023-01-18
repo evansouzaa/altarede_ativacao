@@ -4,7 +4,6 @@ import { FormButtonNav } from "../FormButtonsNav";
 import { useFormData } from "../../../context/formContext";
 import { formConfig } from "../../../config/formConfig";
 
-//types
 import { FormStepTypes } from "../../../types/types";
 
 export const FormDocNetwork = ({ nextFormStep, prevFormStep, currentStep, orderStep }: FormStepTypes) => {
@@ -60,7 +59,7 @@ export const FormDocNetwork = ({ nextFormStep, prevFormStep, currentStep, orderS
       </div>
       <div>
         <label htmlFor="potencia_cto">Potência cto</label>
-        <input className="form-control" type="number" placeholder="Ex: 23.40" id="potencia_cto" {...register("network_doc.potencia_cto" , { valueAsNumber: true })} required />
+        <input className="form-control" type="number" placeholder="Ex: 23.40" step="00.01" id="potencia_cto" {...register("network_doc.potencia_cto", { valueAsNumber: true })} required />
       </div>
       <FormButtonNav currentStep={currentStep} prevFormStep={prevFormStep} />
     </FormStyled>

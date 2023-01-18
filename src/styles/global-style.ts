@@ -9,7 +9,7 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     .App {
-        max-width: 48rem;
-        margin: 30px 15px;
+        max-width: 480px;
+        margin: 10px auto 0 auto
     }
 `

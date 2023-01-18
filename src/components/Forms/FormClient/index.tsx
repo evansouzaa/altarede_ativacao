@@ -4,7 +4,6 @@ import { FormButtonNav } from "../FormButtonsNav";
 import { FormStyled } from "../styles";
 import { formConfig } from "../../../config/formConfig";
 
-//types
 import { FormStepTypes } from "../../../types/types";
 
 export const FormClient = ({ nextFormStep, prevFormStep, currentStep, orderStep }: FormStepTypes) => {

@@ -1,5 +1,4 @@
 import FormCard from './components/FormCard';
-import { FormLocation } from './components/Forms';
 import { nStep } from './config/nStep';
 
 export default function App() {
