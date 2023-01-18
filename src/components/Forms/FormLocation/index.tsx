@@ -14,7 +14,7 @@ import iconMap from "../../../assets/img/icon_maker.svg"
 
 export const FormLocation = ({ nextFormStep, prevFormStep, currentStep, orderStep }: FormStepTypes) => {
 
-  const personalIcon = new Icon({
+  const iconMaker = new Icon({
     iconUrl: iconMap,
     iconSize: [35, 45],
     iconAnchor: [30, 40],
@@ -40,7 +40,7 @@ export const FormLocation = ({ nextFormStep, prevFormStep, currentStep, orderSte
       },
     })
     return position === null ? null : (
-      <Marker icon={personalIcon} position={ position }></Marker>
+      <Marker icon={iconMaker} position={ position }></Marker>
     )
   }
 
