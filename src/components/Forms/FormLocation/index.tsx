@@ -18,7 +18,7 @@ export const FormLocation = ({ nextFormStep, prevFormStep, currentStep, orderSte
 
   const onSubmit = (data: any, e: any) => {
     e.preventDefault()
-    setFormValues(data)
+    setFormValues({position})
     nextFormStep()
   }
 
@@ -32,14 +32,7 @@ export const FormLocation = ({ nextFormStep, prevFormStep, currentStep, orderSte
         setPosition(latlng)
         console.log("posição clicada " + latlng)
       },
-      locationfound(ev) {
-        setPosition(ev.latlng)
-        console.log("posição encontrada " + ev.latlng)
-
-        //map.flyTo(e.latlng, map.getZoom())
-      },
     })
-    console.log(position)
     return position === null ? null : (
       <Marker position={position}></Marker>
     )
