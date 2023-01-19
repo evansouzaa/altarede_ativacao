@@ -1,23 +1,62 @@
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import { Link } from 'react-router-dom';
+import NavDropdown from 'react-bootstrap/NavDropdown';
+import Offcanvas from 'react-bootstrap/Offcanvas';
+import { LinkContainer } from 'react-router-bootstrap'
+import { useWindowSize } from '../../hooks';
 
 export const NavBar = () => {
-  return (
-    <>
-      <Navbar bg="dark" variant="dark" className="rounded">
-        <Container>
-          <Navbar.Brand href="#home">Altarede</Navbar.Brand>
-          <Nav className="me-auto">
-            <Nav.Link href="#home">Ativação</Nav.Link>
-            <Nav.Link href="#features">Trocar Ont</Nav.Link>
-            <Nav.Link href="#pricing">Gridlab</Nav.Link>
-            <Link to={"/MainPage"}>testes</Link>
-          </Nav>
-        </Container>
-      </Navbar>
-      <br />
-    </>
-  );
+    let expand = useWindowSize()
+
+    return (
+        <Navbar bg="dark" variant="dark" expand={expand} className={expand ? "rounded" : ""}>
+            <Container fluid>
+                <LinkContainer to="/">
+                    <Navbar.Brand>Altarede</Navbar.Brand>
+                </LinkContainer>
+                <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
+                <Navbar.Offcanvas
+                    id={`offcanvasNavbar-expand-${expand}`}
+                    aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
+                    placement="end"
+                >
+                    <Offcanvas.Header closeButton>
+                        <LinkContainer to="/">
+                            <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
+                                <LinkContainer to="/">
+                                    <Nav.Link>Altarede</Nav.Link>
+                                </LinkContainer>
+                            </Offcanvas.Title>
+                        </LinkContainer>
+                    </Offcanvas.Header>
+                    <Offcanvas.Body>
+                        <Nav className="justify-content-end flex-grow-1 pe-2">
+                            <LinkContainer to="/ativacao">
+                                <Nav.Link>Ativação</Nav.Link>
+                            </LinkContainer>
+                            <LinkContainer to="/trocar_ont">
+                                <Nav.Link disabled={true}>Trocar Ont</Nav.Link>
+                            </LinkContainer>
+                            <NavDropdown
+                                title="Outros"
+                                id={`offcanvasNavbarDropdown-expand-${expand}`}
+                            >
+                                <LinkContainer to="/gridlab">
+                                    <NavDropdown.Item disabled={true}>Gridlab</NavDropdown.Item>
+                                </LinkContainer>
+                                <LinkContainer to="/distancia">
+                                    <NavDropdown.Item disabled={true}>Medir distância</NavDropdown.Item>
+                                </LinkContainer>
+                                <NavDropdown.Divider />
+                                <LinkContainer to="/sobre">
+                                    <NavDropdown.Item disabled={true}>Sobre</NavDropdown.Item>
+                                </LinkContainer>
+                            </NavDropdown>
+                        </Nav>
+                    </Offcanvas.Body>
+                </Navbar.Offcanvas>
+            </Container>
+        </Navbar >
+    );
 }

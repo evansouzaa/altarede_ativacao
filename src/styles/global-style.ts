@@ -10,6 +10,6 @@ export const GlobalStyle = createGlobalStyle`
 
     .App {
         max-width: 480px;
-        margin: 10px auto 0 auto
+        margin: 0 auto
     }
 `
