@@ -10,7 +10,7 @@ export const NavBar = () => {
     let expand = useWindowSize()
 
     return (
-        <Navbar bg="dark" variant="dark" expand={expand} className={expand ? "rounded" : ""}>
+        <Navbar collapseOnSelect={true} bg="dark" variant="dark" expand={expand} className={expand ? "rounded" : ""}>
             <Container fluid>
                 <LinkContainer to="/">
                     <Navbar.Brand>Altarede</Navbar.Brand>

@@ -1,0 +1,46 @@
+{
+    "client": {
+        "nome": "eva",
+        "login": "asdafds",
+        "plano": "WIFI - CASA TODA"
+    },
+    "network_doc": {
+        "estacao": "PTS-EST2",
+        "area": "A2",
+        "cto": 14,
+        "porta": 14,
+        "potencia_cto": 23
+    },
+    "network_actives": {
+        "ont_modelo": "HG8010H",
+        "serial_ont": "asdffa",
+        "modelo_roteador_1": "WS5200",
+        "serial_roteador_1": "asdf",
+        "modelo_roteador_2": "WS5200",
+        "serial_roteador_2": "asdf",
+        "modelo_roteador_3": "WS5200",
+        "serial_roteador_3": "asdf"
+    },
+    "material_used": {
+        "fibra": 23,
+        "alca": 2323,
+        "nylon": 23,
+        "pto": 23,
+        "cabo_utp": 23,
+        "fixa_fio": 23,
+        "conector_rj45": -123,
+        "conector_apc": 23,
+        "conector_upc": 23,
+        "cordao_apc-apc": 23,
+        "cordao_apc-upc": 23
+    },
+    "client_config": {
+        "client_ssid": "asdf",
+        "client_pass": "asdf",
+        "client_ipv6": true
+    },
+    "position": {
+        "lat": -22.50859735217829,
+        "lng": -43.16539853811264
+    }
+}

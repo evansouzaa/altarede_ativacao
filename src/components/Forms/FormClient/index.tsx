@@ -33,8 +33,8 @@ export const FormClient = ({ nextFormStep, prevFormStep, currentStep, orderStep 
         <label htmlFor="plano">Plano</label>
         <select className="form-control" placeholder='selecione o plano' id='plano' {...register("client.plano")} required>
           <option value="">Selecione...</option>
-          {formConfig.plano.map((item, index) =>(
-            <option value={item} key={index} >{item}</option>
+          {formConfig.planos.map((item, index) =>(
+            <option value={item.nome} key={index} >{item.nome}</option>
           ))}
         </select>
       </div>
