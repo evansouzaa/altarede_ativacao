@@ -1,12 +1,8 @@
 import styled from "styled-components";
 
 export const FormLocationContainer = styled.div`
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-
     .map-style {
+        flex: 1;
         overflow: auto;
         border-radius: 8px;
         margin: 0 auto;
@@ -23,7 +19,6 @@ export const FormLocationContainer = styled.div`
     }
 
     Button {
-        margin: 3px auto 0 auto;
-        min-width: 145px;
+        margin: 0 33%;
     }
 `

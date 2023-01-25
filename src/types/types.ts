@@ -15,5 +15,6 @@ export type FormCardTypes = {
 
 export type FormStepButtonsTypes = {
   currentStep: number,
-  prevFormStep: () => void
+  prevFormStep: () => void,
+  buttonDisable?: boolean
 }

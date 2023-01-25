@@ -8,7 +8,7 @@ import { useFormData } from "../../../context/formContext";
 import { useMapEvents, MapContainer, TileLayer, Marker } from "react-leaflet"
 import { FormButtonNav } from "../FormButtonsNav";
 import { FormStepTypes } from "../../../types/types";
-import { Icon } from "leaflet";
+import { Icon, latLng } from "leaflet";
 
 import iconMap from "../../../assets/img/icon_maker.svg"
 
@@ -17,11 +17,13 @@ export const FormLocation = ({ nextFormStep, prevFormStep, currentStep, orderSte
   const iconMaker = new Icon({
     iconUrl: iconMap,
     iconSize: [35, 45],
-    iconAnchor: [30, 40],
+    iconAnchor: [18, 42],
   })
 
   const { handleSubmit } = useForm()
-
+  
+  const [position, setPosition] = useState<any>(null)
+  
   const { setFormValues } = useFormData()
 
   const onSubmit = (data: any, e: any) => {
@@ -29,8 +31,6 @@ export const FormLocation = ({ nextFormStep, prevFormStep, currentStep, orderSte
     setFormValues({ position })
     nextFormStep()
   }
-
-  const [position, setPosition] = useState<any>(null)
 
   function LocationMarker() {
     const map = useMapEvents({
@@ -48,7 +48,6 @@ export const FormLocation = ({ nextFormStep, prevFormStep, currentStep, orderSte
     navigator.geolocation.getCurrentPosition(function (position) {
       setPosition({ lat: position.coords.latitude, lng: position.coords.longitude })
     });
-
   }
 
   return (
@@ -70,7 +69,7 @@ export const FormLocation = ({ nextFormStep, prevFormStep, currentStep, orderSte
         <p>{position && position.lat + ", " + position.lng}</p>
         <Button variant="success" size="sm" onClick={getPosition}>Obter Localização</Button>
       </FormLocationContainer>
-      <FormButtonNav currentStep={currentStep} prevFormStep={prevFormStep} />
+      <FormButtonNav currentStep={currentStep} prevFormStep={prevFormStep} buttonDisable={position ? false : true} />
     </FormStyled>
   )
 }

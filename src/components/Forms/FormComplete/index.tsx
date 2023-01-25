@@ -2,13 +2,13 @@ import { FormButtonNav } from "../";
 import { useFormData } from "../../../context/formContext";
 import { nStep } from "../../../config/nStep";
 import { FormStyled } from "../styles";
+import { Button } from "react-bootstrap";
 
 import { FormStepButtonsTypes } from "../../../types/types"
 
 export const FormCompleted = ({ prevFormStep, currentStep }: FormStepButtonsTypes) => {
 
   const { data } = useFormData()
-
   return (
     <FormStyled style={currentStep == nStep.steps - 1 ? {} : { display: 'none' }}>
       <h6>Verifique as informações</h6>
@@ -16,38 +16,36 @@ export const FormCompleted = ({ prevFormStep, currentStep }: FormStepButtonsType
         <div>
           <ul>
             <li>🔴<b>Ativação Ont</b>🔴</li>
-            <hr />
+            <li>=== Informações do Cliente ===</li>
             <li><b>Nome: </b>{data.client.nome}</li>
             <li><b>Login: </b>{data.client.login}</li>
             <li><b>Plano: </b>{data.client.plano}</li>
-            <hr />
+            <li>=== Documentação de Rede ===</li>
             <li><b>Estação: </b>{data.network_doc.estacao}</li>
             <li><b>Área: </b>{data.network_doc.area}</li>
             <li><b>CTO: </b>{data.network_doc.cto}</li>
             <li><b>Porta: </b>{data.network_doc.porta}</li>
             <li><b>Potência Cto: </b>{data.network_doc.potencia_cto}</li>
-            <hr />
-            <li><b>Modelo Ont: </b>{data.network_actives.ont_modelo}</li>
+            <li>=== Ativos de Rede ===</li>
+            <li><b>Modelo Ont: </b>{data.network_actives.modelo_ont}</li>
             <li><b>Serial Ont: </b>{data.network_actives.serial_ont}</li>
-            {data.network_actives.modelo_roteador_1 && (
+            {data.network_actives.serial_roteador_1 && (
               <>
-                <li><b>Modelo Roteador 1: </b>{data.network_actives.modelo_roteador_1}</li>
+                <li><b>Modelo Roteador: </b>{data.network_actives.modelo_roteador}</li>
                 <li><b>Serial Roteador 1: </b>{data.network_actives.serial_roteador_1}</li>
               </>
             )}
-            {data.network_actives.modelo_roteador_2 && (
+            {data.network_actives.serial_roteador_2 && (
               <>
-                <li><b>Modelo Roteador 2: </b>{data.network_actives.modelo_roteador_2}</li>
                 <li><b>Serial Roteador 2: </b>{data.network_actives.serial_roteador_2}</li>
               </>
             )}
-            {data.network_actives.modelo_roteador_3 && (
+            {data.network_actives.serial_roteador_3 && (
               <>
-                <li><b>Modelo Roteador 3: </b>{data.network_actives.modelo_roteador_3}</li>
                 <li><b>Serial Roteador 3: </b>{data.network_actives.serial_roteador_3}</li>
               </>
             )}
-            <hr />
+            <li>=== Material Utilizado ===</li>
             {!!data.material_used.fibra && (<li><b>Fibra: </b>{data.material_used.fibra}</li>)}
             {!!data.material_used.alca && (<li><b>Alça: </b>{data.material_used.alca}</li>)}
             {!!data.material_used.nylon && (<li><b>Nylon: </b>{data.material_used.nylon}</li>)}
@@ -59,16 +57,16 @@ export const FormCompleted = ({ prevFormStep, currentStep }: FormStepButtonsType
             {!!data.material_used.conector_upc && (<li><b>Conec. Upc: </b>{data.material_used.conector_upc}</li>)}
             {!!data.material_used.cordao_apc_apc && (<li><b>Cord. APC/APC: </b>{data.material_used.cordao_apc_apc}</li>)}
             {!!data.material_used.cordao_apc_upc && (<li><b>Cord. APC/UPC: </b>{data.material_used.cordao_apc_upc}</li>)}
-            <hr />
-            {/* {data.position.lat && data.position.lng ? (
-              <li><b>Lat Lng: </b>{data.position.lat + ", " + data.position.lng}</li>
-            ):(
-              <li><b>Lat Lng: </b>Localização não enviada.</li>
-            )} */}
+            <li>=== Configurações do Cliente ===</li>
+            {!!data.client_config.client_ssid && (<li><b>SSiD: </b>{data.client_config.client_ssid}</li>)}
+            {!!data.client_config.client_pass && (<li><b>Senha: </b>{data.client_config.client_pass}</li>)}
+            <li><b>Ipv6: </b>{data.client_config.client_ipv6 ? "Sim" : "Não"}</li>
+            <li>=== Localização ===</li>
+            {data.position && (<li><b>Lat Lng: </b>{data.position.lat + ", " + data.position.lng}</li>)}
           </ul>
         </div>
       ) : (<div>Ocorreu algum erro, verifique a ativação ou recarregue a página!</div>)}
-      {/* <pre>{JSON.stringify(data)}</pre> */}
+      <Button variant="danger" className="btn-send-active" size="sm">Solicitar Ativação</Button>
       <FormButtonNav currentStep={currentStep} prevFormStep={prevFormStep} />
     </FormStyled>
   )
