@@ -31,8 +31,8 @@
         "conector_rj45": -123,
         "conector_apc": 23,
         "conector_upc": 23,
-        "cordao_apc-apc": 23,
-        "cordao_apc-upc": 23
+        "cordao_apc_apc": 23,
+        "cordao_apc_upc": 23
     },
     "client_config": {
         "client_ssid": "asdf",

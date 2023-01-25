@@ -13,7 +13,7 @@ export default function FormCard({ children, nStep, startStep }: FormCardTypes) 
   return (
     <FormProvider>
       <FormCardContainer>
-        <h5>Ativação do ONU Altarede</h5>
+        <h5>Ativação de ONU Altarede</h5>
         <span>Passo {formStep + 1} de {nStep}</span>
 
         {children}

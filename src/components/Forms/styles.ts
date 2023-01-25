@@ -19,4 +19,19 @@ export const FormStyled = styled.form`
     .mb-1 > label {
         font-size: 0.7rem;
     }
+
+    hr {
+        margin: 5px 0
+    }
+
+    ul {
+        margin: 0 20px
+    }
+    ul li {
+        list-style: none;
+        font-size: 12px;
+    }
+    ul li:nth-child(1) {
+        align-self: center;
+    }
 `

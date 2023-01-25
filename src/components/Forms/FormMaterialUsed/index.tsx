@@ -67,11 +67,11 @@ export const FormMaterialUsed = ({ nextFormStep, prevFormStep, currentStep, orde
             <div className="row">
                 <div className="col mb-1">
                     <label>Cord. APC/APC</label>
-                    <input type="number" inputMode="numeric" className="input-number form-control" id="cordao_apc-apc" placeholder="0" {...register("material_used.cordao_apc-apc", { valueAsNumber: true })} />
+                    <input type="number" inputMode="numeric" className="input-number form-control" id="cordao_apc_apc" placeholder="0" {...register("material_used.cordao_apc_apc", { valueAsNumber: true })} />
                 </div>
                 <div className="col mb-1">
                     <label>Cord. APC/UPC</label>
-                    <input type="number" inputMode="numeric" className="input-number form-control" id="cordao_apc-upc" placeholder="0" {...register("material_used.cordao_apc-upc", { valueAsNumber: true })} />
+                    <input type="number" inputMode="numeric" className="input-number form-control" id="cordao_apc_upc" placeholder="0" {...register("material_used.cordao_apc_upc", { valueAsNumber: true })} />
                 </div>
             </div>
             <FormButtonNav currentStep={currentStep} prevFormStep={prevFormStep} />
