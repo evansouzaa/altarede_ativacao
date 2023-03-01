@@ -12,7 +12,7 @@
         "potencia_cto": 23
     },
     "network_actives": {
-        "ont_modelo": "HG8010H",
+        "modelo_ont": "HG8010H",
         "serial_ont": "asdffa",
         "modelo_roteador_1": "WS5200",
         "serial_roteador_1": "asdf",

@@ -26,7 +26,6 @@ export default function FormProvider({ children } :ChildrenPropsType) {
     }));
   };
   
-  console.log(data)
   return (
     <FormContext.Provider value={{ data, setFormValues }}>
       {children}

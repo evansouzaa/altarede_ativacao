@@ -20,8 +20,7 @@ export const FormStyled = styled.form`
     }
 
     .btn-send-active {
-        margin-top: 10px;
-        align-self: center;
+        margin: 10px auto 0 auto;
         max-width: 250px;
     }
 
@@ -46,32 +45,10 @@ export const FormStyled = styled.form`
         font-size: 12px;
     }
 
-    .hr-lines:before {
-        content:" ";
-        display: block;
-        height: 2px;
-        width: 15%;
-        position: absolute;
-        top: 50%;
-        left: 10%;
-        background: red;
+    .wppMessage {
+        background-color: #128C7E;
+        padding: 1.2rem;
+        border-radius: 0.5rem;
     }
 
-    .hr-lines {
-        position: relative;
-        /*  new lines  */
-        max-width: 500px;
-        text-align: center;
-    }
-
-    .hr-lines:after {
-        content:" ";
-        height: 2px;
-        width: 15%;
-        background: red;
-        display: block;
-        position: absolute;
-        top: 50%;
-        right: 10%;
-    }
 `

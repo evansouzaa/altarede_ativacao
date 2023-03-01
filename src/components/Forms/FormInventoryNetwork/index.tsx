@@ -16,6 +16,7 @@ export const FormInventoryNetwork = ({ nextFormStep, prevFormStep, currentStep, 
     nextFormStep()
   }
 
+  //verifica se no objeto cliente e seta a quantidade de campos de roteador
   let routerFormControl = 0
   if (data.hasOwnProperty("client")) {
     const { qtd_roteador }: any = formConfig.planos.find(element => element.nome === data.client.plano)
@@ -31,7 +32,7 @@ export const FormInventoryNetwork = ({ nextFormStep, prevFormStep, currentStep, 
         <select className="form-control" id='modelo_ont' {...register("network_actives.modelo_ont")} required>
           <option value="">Selecione...</option>
           {formConfig.modelo_ont.map((item, index) => (
-            <option value={item} key={index} >{item}</option>
+            <option value={item.modelo} key={index} >{item.modelo}</option>
           ))}
         </select>
       </div>

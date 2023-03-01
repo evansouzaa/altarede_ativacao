@@ -9,10 +9,10 @@ export const MainPage = () => {
                 <h2>Altarede Tools</h2>
                 <p>Opções do Aplicativo</p>
                 <ul>
-                    <li>Solicitar ativação</li>
-                    <li>Solicitar troca de Ont</li>
-                    <li>Verificar Status Sirenes Gridlab</li>
-                    <li>Medir distância entre 2 pontos</li>
+                    <li>Solicitar ativação ✅</li>
+                    <li><s>Solicitar troca de Ont</s> ❌</li>
+                    <li><s>Verificar Status Sirenes Gridlab</s> ❌</li>
+                    <li><s>Medir distância entre 2 pontos</s> ❌</li>
                 </ul>
             </div>
         </MainPageContainer>
