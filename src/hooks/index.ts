@@ -1,4 +1,5 @@
 import { useLayoutEffect, useState } from "react"
+const baseUrl = import.meta.env.VITE_API_BASE_URL
 
 export const useWindowSize = (): boolean => {
     const [windowSize, setWindowSize] = useState(false)
@@ -15,6 +16,7 @@ export const useWindowSize = (): boolean => {
 
 export const sendDataDb = (data : any) => {
     fetch("https://altarede.duckdns.org:3001/ativacao", {
+    fetch(baseUrl, {
         method: "POST",
         body: data
       }).then((response) => {
