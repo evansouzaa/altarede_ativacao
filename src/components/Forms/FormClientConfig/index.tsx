@@ -21,8 +21,8 @@ export const FormClientConfig = ({ nextFormStep, prevFormStep, currentStep, orde
 
   let ontFormControl = true
   if (data.hasOwnProperty("client")) {
-    const { ont_wifi }: any = formConfig.planos.find(element => element.nome === data.client.plano)
-    ontFormControl = ont_wifi
+    const { roteador_wifi }: any = formConfig.planos.find(element => element.nome === data.client.plano)
+    ontFormControl = roteador_wifi
   }
 
   return (
@@ -36,28 +36,30 @@ export const FormClientConfig = ({ nextFormStep, prevFormStep, currentStep, orde
         <label htmlFor="client_pass">Senha</label>
         <input className="form-control" type="text" placeholder='Digite a senha' id='client_pass' {...register("client_config.client_pass")} />
       </div>
-      <br />
-      <div className="row justify-content-center mx-1">
-        {!ontFormControl && (
-          <div className="row">
-            <div className="col-6 form-check form-switch">
-              <input className="form-check-input" type="checkbox" id="ipv6" {...register("client_config.client_ipv6")} />
-              <label className="form-check-label" htmlFor="ipv6">IPV6</label>
+          <br />
+          <div className="row justify-content-center mx-1">
+            <div className="row">
+              <div className="col-6 form-check form-switch">
+                <input className="form-check-input" type="checkbox" id="ipv6" {...register("client_config.client_ipv6")} />
+                <label className="form-check-label" htmlFor="ipv6">IPV6</label>
+              </div>
+              <div className="col-6 form-check form-switch">
+                <input className="form-check-input" type="checkbox" id="roteadorpreset" {...register("client_config.roteador_preset")} />
+                <label className="form-check-label" htmlFor="roteadorpreset">Roteador Preset</label>
+              </div>
             </div>
-            <div className="col-6 form-check form-switch">
-              <input className="form-check-input" type="checkbox" id="roteadorpreset" {...register("client_config.roteador_preset")} />
-              <label className="form-check-label" htmlFor="roteadorpreset">Roteador Preset</label>
+            <div className="row">
+              <div className="col-6 form-check form-switch">
+                <input className="form-check-input" type="checkbox" id="desmembrar_wifi5" {...register("client_config.desmembrar_wifi5")} />
+                <label className="form-check-label" htmlFor="desmembrar_wifi5">Desmembrar Wifi5</label>
+              </div>
             </div>
           </div>
-        )}
-        <div className="row">
-          <div className="col-6 form-check form-switch">
-            <input className="form-check-input" type="checkbox" id="wifi5separado" {...register("client_config.separar_wifi")} />
-            <label className="form-check-label" htmlFor="wifi5separado">Wifi 5 Separado</label>
-          </div>
-        </div>
+          <br />
+      <div>
+        <label htmlFor="tecnicos">Técnicos</label>
+        <input className="form-control" type="text" placeholder="Nome do(s) técnicos" id="tecnicos" {...register("client_config.tecnicos")} />
       </div>
-      <br />
       <div>
         <label htmlFor="obs">Observações</label>
         <textarea className="form-control" id='obs' rows={3} {...register("client_config.obs")} />

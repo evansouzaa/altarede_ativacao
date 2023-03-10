@@ -6,27 +6,24 @@ import { Button } from "react-bootstrap";
 import { sendDataDb } from "../../../hooks";
 import { FormStepButtonsTypes } from "../../../types/types"
 import { formatWppMessage } from "../../../utils";
+import Loading from "../../Loading";
 
 export const FormCompleted = ({ prevFormStep, currentStep }: FormStepButtonsTypes) => {
 
   const { data } = useFormData()
 
   const handleButton = () => {
-    //sendDataDb(data).then((res) => {
-    //... codigo para enviar pelo whatsapp vai aqui...
-    //window.location.href = `https://wa.me/?text=${encodeURIComponent(wppMessage)}`; //ENVIA WHATSAPP
-    //})
-
     const wppMessage = formatWppMessage(data)
-    console.log(wppMessage)
-    //window.location.href = `https://wa.me/?text=${encodeURIComponent(wppMessage)}`; //ENVIA WHATSAPP
+    window.location.href = `https://wa.me/?text=${encodeURIComponent(wppMessage)}`; //ENVIA WHATSAPP
   }
 
   return (
     <FormStyled style={currentStep == nStep.steps - 1 ? {} : { display: 'none' }}>
       <h6>Verifique as informações</h6>
       <div className="wppMessage">
-        <span style={{ whiteSpace: "pre-line" }}> {"position" in data && `${ formatWppMessage(data).replaceAll("*", "") }`} </span>
+        <span style={{ whiteSpace: "pre-line" }}>
+          {"position" in data && `${formatWppMessage(data).replaceAll("*", "")}`}
+        </span>
       </div>
       <Button variant="danger" onClick={handleButton} className="btn-send-active" size="sm">Solicitar Ativação</Button>
       <FormButtonNav currentStep={currentStep} prevFormStep={prevFormStep} />

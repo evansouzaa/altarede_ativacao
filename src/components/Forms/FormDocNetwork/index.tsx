@@ -19,7 +19,7 @@ export const FormDocNetwork = ({ nextFormStep, prevFormStep, currentStep, orderS
   }
 
   return (
-    <FormStyled onSubmit={handleSubmit(onSubmit)} style={currentStep == orderStep ? {} : { display: 'none' }}>
+    <FormStyled onSubmit={handleSubmit(onSubmit)} style={currentStep == orderStep ? {} : { display: 'none' }} autoComplete="off">
       <h5>Documentação de rede</h5>
       <div>
         <label htmlFor="estacao">Estação</label>

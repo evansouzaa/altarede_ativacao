@@ -25,7 +25,7 @@ export const FormInventoryNetwork = ({ nextFormStep, prevFormStep, currentStep, 
 
 
   return (
-    <FormStyled onSubmit={handleSubmit(onSubmit)} style={currentStep == orderStep ? {} : { display: 'none' }}>
+    <FormStyled onSubmit={handleSubmit(onSubmit)} style={currentStep == orderStep ? {} : { display: 'none' }} autoComplete="off">
       <h5>Inventário de Rede</h5>
       <div>
         <label htmlFor="modelo_ont">Modelo da Ont</label>

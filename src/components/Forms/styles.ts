@@ -49,6 +49,7 @@ export const FormStyled = styled.form`
         background-color: #128C7E;
         padding: 1.2rem;
         border-radius: 0.5rem;
+        color: white;
     }
 
 `
