@@ -1,7 +1,5 @@
 import { MainPageContainer } from "./styles"
 
-import backgroundImage from "../../assets/img/background_cloudy.svg"
-
 export const MainPage = () => {
     return (
         <MainPageContainer>
@@ -11,8 +9,8 @@ export const MainPage = () => {
                 <ul>
                     <li>Solicitar ativação ✅</li>
                     <li><s>Solicitar troca de Ont</s> ❌</li>
-                    <li><s>Verificar Status Sirenes Gridlab</s> ❌</li>
-                    <li><s>Medir distância entre 2 pontos</s> ❌</li>
+                    <li><s>Status Sirenes Gridlab</s> ❌</li>
+                    <li><s>Distância entre 2 pontos</s> ❌</li>
                 </ul>
             </div>
         </MainPageContainer>

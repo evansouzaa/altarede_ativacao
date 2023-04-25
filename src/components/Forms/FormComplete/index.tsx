@@ -14,7 +14,8 @@ export const FormCompleted = ({ prevFormStep, currentStep }: FormStepButtonsType
 
   const handleButton = () => {
     const wppMessage = formatWppMessage(data)
-    window.location.href = `https://wa.me/?text=${encodeURIComponent(wppMessage)}`; //ENVIA WHATSAPP
+    console.log(data)
+    // window.location.href = `https://wa.me/?text=${encodeURIComponent(wppMessage)}`; //ENVIA WHATSAPP
   }
 
   return (

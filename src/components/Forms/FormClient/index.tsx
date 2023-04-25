@@ -8,7 +8,18 @@ import { FormStepTypes } from "../../../types/types";
 
 export const FormClient = ({ nextFormStep, prevFormStep, currentStep, orderStep }: FormStepTypes) => {
 
-  const { register, handleSubmit } = useForm()
+  const [defaultLoginValue] = formConfig.estacao.slice(-1)
+  console.log(defaultLoginValue.match(/^[A-Z]*/))
+  //.match(/^[A-Z]*/)
+  const { register, handleSubmit } = useForm({
+    defaultValues: {
+      client: {
+        nome: "",
+        login: defaultLoginValue.match(/^[A-Z]*/),
+        plano: ""
+      }
+    }
+  })
 
   const { setFormValues } = useFormData()
 
@@ -27,13 +38,13 @@ export const FormClient = ({ nextFormStep, prevFormStep, currentStep, orderStep 
       </div>
       <div>
         <label htmlFor="login">Login</label>
-        <input className="form-control" type="text" placeholder='Digite o login' id='login' {...register("client.login")} required />
+        <input className="form-control" type="text" inputMode="numeric" style={{ textTransform: "uppercase" }} placeholder='Digite o login' id='login' {...register("client.login")} required />
       </div>
       <div>
         <label htmlFor="plano">Plano</label>
         <select className="form-control" placeholder='selecione o plano' id='plano' {...register("client.plano")} required>
           <option value="">Selecione...</option>
-          {formConfig.planos.map((item, index) =>(
+          {formConfig.planos.map((item, index) => (
             <option value={item.nome} key={index} >{item.nome}</option>
           ))}
         </select>

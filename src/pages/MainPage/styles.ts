@@ -7,4 +7,8 @@ export const MainPageContainer = styled.div`
     flex-direction: column;
     height: 60vh;
     padding: 50px;
+
+    .content > ul > li {
+        font-size: 14px;
+    } 
 `
