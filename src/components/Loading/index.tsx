@@ -1,7 +1,10 @@
-import ReactLoading from 'react-loading';
+import ReactLoading from "react-loading"
+import { LoadingContainer } from "./styles";
  
-const Loading = () => (
-    <ReactLoading type={"spin"} color={"rgb(13, 110, 253)"} height={'20%'} width={'20%'} />
+const Loading = ({ status } : any) => (
+    <LoadingContainer statusLoading={true}>
+        <ReactLoading type={"spin"} color={"rgb(190, 190, 190)"} height={'150px'} width={'150px'} />
+    </LoadingContainer>
 );
  
 export default Loading;

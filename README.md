@@ -23,7 +23,7 @@ Rodando o projeto:
 
     npm run dev
  ##### Acesse
-
+     https://altarede-ativacao.vercel.app/
      http://localhost:5173/
 
 Obrigado pela visita!

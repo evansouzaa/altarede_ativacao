@@ -7,15 +7,18 @@ import { sendDataDb } from "../../../hooks";
 import { FormStepButtonsTypes } from "../../../types/types"
 import { formatWppMessage } from "../../../utils";
 import Loading from "../../Loading";
+import { useState } from "react";
 
 export const FormCompleted = ({ prevFormStep, currentStep }: FormStepButtonsTypes) => {
 
   const { data } = useFormData()
 
+  const [LoadingStatus, setLoadingStatus] = useState(false)
+
   const handleButton = () => {
     const wppMessage = formatWppMessage(data)
-    console.log(data)
-    // window.location.href = `https://wa.me/?text=${encodeURIComponent(wppMessage)}`; //ENVIA WHATSAPP
+    sendDataDb(data)
+    window.location.href = `https://wa.me/?text=${encodeURIComponent(wppMessage)}`; //ENVIA WHATSAPP
   }
 
   return (
@@ -28,6 +31,7 @@ export const FormCompleted = ({ prevFormStep, currentStep }: FormStepButtonsType
       </div>
       <Button variant="danger" onClick={handleButton} className="btn-send-active" size="sm">Solicitar Ativação</Button>
       <FormButtonNav currentStep={currentStep} prevFormStep={prevFormStep} />
+      <Loading status={LoadingStatus}></Loading>
     </FormStyled>
   )
 }

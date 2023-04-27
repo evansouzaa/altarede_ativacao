@@ -15,7 +15,7 @@ export const useWindowSize = (): boolean => {
 }
 
 export const sendDataDb = (data: any) => {
-  fetch("https://localhost", {
+  fetch("https://altarede.duckdns.org:3001/ativacao_app", {
     method: "POST",
     body: data
   }).then((response) => {

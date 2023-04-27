@@ -9,8 +9,6 @@ import { FormStepTypes } from "../../../types/types";
 export const FormClient = ({ nextFormStep, prevFormStep, currentStep, orderStep }: FormStepTypes) => {
 
   const [defaultLoginValue] = formConfig.estacao.slice(-1)
-  console.log(defaultLoginValue.match(/^[A-Z]*/))
-  //.match(/^[A-Z]*/)
   const { register, handleSubmit } = useForm({
     defaultValues: {
       client: {
