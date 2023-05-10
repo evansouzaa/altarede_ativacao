@@ -1,10 +1,9 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { FormButtonNav } from '.';
-import { Button } from 'react-bootstrap';
+import { FormDocNetwork } from '.';
 
 export default {
-    title: 'Components/FormButtonNav',
-    component: FormButtonNav,
+    title: 'Components/FormDocNetwork',
+    component: FormDocNetwork,
     decorators: [
         (Story) => {
             return (
@@ -16,6 +15,4 @@ export default {
     ]
 } as Meta
 
-export const Default : StoryObj = {
-
-}
+export const Default: StoryObj = {}
