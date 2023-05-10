@@ -1,20 +1,20 @@
 import { calcGeolocationDistance } from "../utils"
 
 function setLocationArea() {
+    let estacaoConfig = [""]
     const options = { enableHighAccuracy: true, timeout: 5000, maximumAge: 0 }
     const success = (positon : any) => {
         //calc distance station
         const distances = calcGeolocationDistance(positon.coords.latitude, positon.coords.longitude)
-        formConfig.estacao = distances.map(element => element.name)
+        estacaoConfig.push(...distances.map(element => element.name))
     }
     const error = (err : any) => {
         alert("Erro ao obter localização")
         setLocationArea()
     }
     navigator.geolocation.getCurrentPosition(success, error, options)
+    return estacaoConfig
 }
-
-setLocationArea()
 
 export const formConfig = {
     planos: [
@@ -38,7 +38,7 @@ export const formConfig = {
         { modelo: "EG8145X6" }
     ],
     modelo_roteador: ["WS5200", "AX2", "AX3"],
-    estacao: [""],
+    estacao: setLocationArea(),
     estacaoMaxDistance: 13,
     area: [...Array.from({ length: 128 }, (_, i) => `A${i + 1}`)],
     cto: [...Array.from({ length: 16 }, (_, i) => i + 1)],
