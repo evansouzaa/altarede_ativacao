@@ -1,11 +1,20 @@
 import { calcGeolocationDistance } from "../utils"
 
-(function setLocationArea() {
-    navigator.geolocation.getCurrentPosition((positon) => {
+function setLocationArea() {
+    const options = { enableHighAccuracy: true, timeout: 5000, maximumAge: 0 }
+    const success = (positon : any) => {
+        //calc distance station
         const distances = calcGeolocationDistance(positon.coords.latitude, positon.coords.longitude)
         formConfig.estacao = distances.map(element => element.name)
-    })
-})()
+    }
+    const error = (err : any) => {
+        alert("Erro ao obter localização")
+        setLocationArea()
+    }
+    navigator.geolocation.getCurrentPosition(success, error, options)
+}
+
+setLocationArea()
 
 export const formConfig = {
     planos: [
