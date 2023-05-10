@@ -10,6 +10,8 @@ import { useState } from "react";
 export const FormClient = ({ nextFormStep, prevFormStep, currentStep, orderStep }: FormStepTypes) => {
 
   const [defaultLoginValue, setdefaultLoginValue] = useState(formConfig.estacao[formConfig.estacao.length - 1])
+  console.log(formConfig.estacao)
+  console.log(defaultLoginValue)
   const { register, handleSubmit } = useForm({
     defaultValues: {
       client: {
@@ -33,11 +35,11 @@ export const FormClient = ({ nextFormStep, prevFormStep, currentStep, orderStep 
       <h5>Informações do Cliente</h5>
       <div>
         <label htmlFor="name">Nome</label>
-        <input className="form-control" type="text" placeholder="Digite o nome" id="nome" {...register("client.nome")} required />
+        <input className="form-control" type="text" placeholder="Digite o nome" id="name" {...register("client.nome")} required />
       </div>
       <div>
         <label htmlFor="login">Login</label>
-        <input className="form-control" type="text" inputMode="numeric" style={{ textTransform: "uppercase" }} placeholder='Digite o login' id='login' {...register("client.login")} required />
+        <input className="form-control" type="text" inputMode="numeric" placeholder='Digite o login' id='login' {...register("client.login")} required />
       </div>
       <div>
         <label htmlFor="plano">Plano</label>

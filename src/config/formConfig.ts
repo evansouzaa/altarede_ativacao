@@ -1,7 +1,7 @@
 import { calcGeolocationDistance } from "../utils"
 
 function setLocationArea() {
-    let estacaoConfig = [""]
+    let estacaoConfig = Array()
     const options = { enableHighAccuracy: true, timeout: 5000, maximumAge: 0 }
     const success = (positon : any) => {
         //calc distance station

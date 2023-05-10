@@ -23,7 +23,7 @@ export const FormDocNetwork = ({ nextFormStep, prevFormStep, currentStep, orderS
       <h5>Documentação de rede</h5>
       <div>
         <label htmlFor="estacao">Estação</label>
-        <select className="form-control" id='network_doc.estacao' {...register("network_doc.estacao")} required>
+        <select className="form-control" id='estacao' {...register("network_doc.estacao")} required>
           <option value="">Selecione...</option>
           {formConfig.estacao.map((item, index) => (
             <option value={item} key={index} >{item}</option>
