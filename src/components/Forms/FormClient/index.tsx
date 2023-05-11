@@ -5,18 +5,14 @@ import { FormStyled } from "../styles";
 import { formConfig } from "../../../config/formConfig";
 
 import { FormStepTypes } from "../../../types/types";
-import { useState } from "react";
 
 export const FormClient = ({ nextFormStep, prevFormStep, currentStep, orderStep }: FormStepTypes) => {
-
-  const [defaultLoginValue, setdefaultLoginValue] = useState(formConfig.estacao[formConfig.estacao.length - 1])
   console.log(formConfig.estacao)
-  console.log(defaultLoginValue)
   const { register, handleSubmit } = useForm({
     defaultValues: {
       client: {
         nome: "",
-        login: defaultLoginValue.match(/^[A-Z]*/),
+        login: formConfig.estacao[formConfig.estacao.length - 1].match(/^[A-Z]*/),
         plano: ""
       }
     }
