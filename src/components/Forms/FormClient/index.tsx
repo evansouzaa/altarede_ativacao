@@ -3,20 +3,28 @@ import { useFormData } from "../../../context/formContext";
 import { FormButtonNav } from "../FormButtonsNav";
 import { FormStyled } from "../styles";
 import { formConfig } from "../../../config/formConfig";
-
+import { useState } from "react";
 import { FormStepTypes } from "../../../types/types";
 
 export const FormClient = ({ nextFormStep, prevFormStep, currentStep, orderStep }: FormStepTypes) => {
-  console.log(formConfig.estacao)
+
+  const [defaultLoginValue, setdefaultLoginValue] = useState(() => {
+    const saved: any = localStorage.getItem("estacao");
+    const initialValue = JSON.parse(saved);
+    return initialValue;
+  })
+
   const { register, handleSubmit } = useForm({
     defaultValues: {
       client: {
         nome: "",
-        login: formConfig.estacao[formConfig.estacao.length - 1].match(/^[A-Z]*/),
+        login: defaultLoginValue[defaultLoginValue.length - 1].match(/^[A-Z]*/),
         plano: ""
       }
     }
   })
+
+  // formConfig.estacao.map(item => item.match(/^[A-Z]*/)).slice(-1)
 
   const { setFormValues } = useFormData()
 

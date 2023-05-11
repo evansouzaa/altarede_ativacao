@@ -1,7 +1,7 @@
 import { calcGeolocationDistance } from "../utils"
 
-function getPosition(options?: PositionOptions): Promise<any> {
-    return new Promise((resolve, reject) => 
+export function getPosition(options?: PositionOptions): Promise<any> {
+    return new Promise((resolve, reject) =>
         navigator.geolocation.getCurrentPosition(resolve, reject, options)
     );
 }
@@ -63,14 +63,16 @@ export const estacoesConfig = [
     }
 ]
 
-const options = { enableHighAccuracy: true, timeout: 5000, maximumAge: 0 }
-
-getPosition(options)
-  .then((position) => {
-            //calc distance station
-            const distances = calcGeolocationDistance(position.coords.latitude, position.coords.longitude)
-            formConfig.estacao.push(...distances.map(element => element.name))
-  })
-  .catch((err) => {
-    console.error(err.message);
-  });
+//get position and calculate distance to stations
+getPosition()
+    .then((position) => {
+        //calc distance station
+        const distances = calcGeolocationDistance(position.coords.latitude, position.coords.longitude)
+        // console.log(distances.map(element => element.name))
+        // console.log(position.coords.latitude, position.coords.longitude)
+        formConfig.estacao = distances.map(element => element.name)
+        localStorage.setItem('estacao', JSON.stringify(formConfig.estacao))
+    })
+    .catch((err) => {
+        console.error(err.message);
+    });
