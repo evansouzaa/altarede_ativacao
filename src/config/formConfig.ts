@@ -1,28 +1,19 @@
 import { calcGeolocationDistance } from "../utils"
 
-// export function setLocationArea() {
-//     let estacaoConfig = Array()
-
-//     const success = (positon : any) => {
-//         //calc distance station
-//         const distances = calcGeolocationDistance(positon.coords.latitude, positon.coords.longitude)
-//         estacaoConfig.push(...distances.map(element => element.name))
-//     }
-//     const error = (err : any) => {
-//         alert("Erro ao obter localização")
-//         setLocationArea()
-//     }
-//     navigator.geolocation.getCurrentPosition(success, error, options)
-//     console.log(estacaoConfig)
-//     return estacaoConfig
-// }
-
-const options = { enableHighAccuracy: true, timeout: 5000, maximumAge: 0 }
-
-function getPosition(options?: PositionOptions): Promise<any> {
-    return new Promise((resolve, reject) =>
-        navigator.geolocation.getCurrentPosition(resolve, reject, options)
-    );
+function setLocationArea() {
+    let estacaoConfig = Array()
+    const options = { enableHighAccuracy: true, timeout: 5000, maximumAge: 0 }
+    const success = (positon : any) => {
+        //calc distance station
+        const distances = calcGeolocationDistance(positon.coords.latitude, positon.coords.longitude)
+        estacaoConfig.push(...distances.map(element => element.name))
+    }
+    const error = (err : any) => {
+        alert("Erro ao obter localização")
+        setLocationArea()
+    }
+    navigator.geolocation.getCurrentPosition(success, error, options)
+    return estacaoConfig
 }
 
 export const formConfig = {
@@ -47,7 +38,7 @@ export const formConfig = {
         { modelo: "EG8145X6" }
     ],
     modelo_roteador: ["WS5200", "AX2", "AX3"],
-    estacao: [""],
+    estacao: setLocationArea(),
     estacaoMaxDistance: 13,
     area: [...Array.from({ length: 128 }, (_, i) => `A${i + 1}`)],
     cto: [...Array.from({ length: 16 }, (_, i) => i + 1)],
@@ -81,15 +72,4 @@ export const estacoesConfig = [
         long: -42.531648876727196
     }
 ]
-
-// get location and set estacao
-try {
-    const position = await getPosition(options);
-            //calc distance station
-        const distances = calcGeolocationDistance(position.coords.latitude, position.coords.longitude)
-        formConfig.estacao.push(...distances.map(element => element.name))
-        console.log(position);
-} catch (err) {
-    console.error(err);
-}
 
