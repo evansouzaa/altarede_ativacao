@@ -24,8 +24,6 @@ export const FormClient = ({ nextFormStep, prevFormStep, currentStep, orderStep 
     }
   })
 
-  // formConfig.estacao.map(item => item.match(/^[A-Z]*/)).slice(-1)
-
   const { setFormValues } = useFormData()
 
   const onSubmit = (data: any, e: any) => {
@@ -35,19 +33,46 @@ export const FormClient = ({ nextFormStep, prevFormStep, currentStep, orderStep 
   }
 
   return (
-    <FormStyled onSubmit={handleSubmit(onSubmit)} style={currentStep == orderStep ? {} : { display: 'none' }} autoComplete="off">
+    <FormStyled
+      onSubmit={handleSubmit(onSubmit)}
+      style={currentStep == orderStep ? {} : { display: 'none' }}
+      autoComplete="off">
       <h5>Informações do Cliente</h5>
       <div>
         <label htmlFor="name">Nome</label>
-        <input className="form-control" type="text" placeholder="Digite o nome" id="name" {...register("client.nome")} required />
+        <input
+          className="form-control"
+          type="text"
+          placeholder="Digite o nome"
+          id="name"
+          minLength={6}
+          {...register("client.nome")}
+          onChange={(e) => e.target.value = e.target.value.toUpperCase()}
+          required
+        />
       </div>
       <div>
         <label htmlFor="login">Login</label>
-        <input className="form-control" type="text" inputMode="numeric" placeholder='Digite o login' id='login' {...register("client.login")} required />
+        <input
+          className="form-control"
+          type="text"
+          inputMode="numeric"
+          placeholder='Digite o login'
+          minLength={12}
+          id='login'
+          {...register("client.login")}
+          required
+        />
       </div>
       <div>
         <label htmlFor="plano">Plano</label>
-        <select className="form-control" placeholder='selecione o plano' id='plano' {...register("client.plano")} required>
+        <select
+          className="form-control"
+          placeholder='selecione o plano'
+          id='plano'
+          {...register("client.plano")}
+          required
+        >
           <option value="">Selecione...</option>
           {formConfig.planos.map((item, index) => (
             <option value={item.nome} key={index} >{item.nome}</option>

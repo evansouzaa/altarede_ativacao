@@ -12,7 +12,12 @@ import { Icon, latLng } from "leaflet";
 
 import iconMap from "../../../assets/img/icon_maker.svg"
 
-export const FormLocation = ({ nextFormStep, prevFormStep, currentStep, orderStep }: FormStepTypes) => {
+export const FormLocation = ({
+  nextFormStep,
+  prevFormStep,
+  currentStep,
+  orderStep
+}: FormStepTypes) => {
 
   const iconMaker = new Icon({
     iconUrl: iconMap,
@@ -21,9 +26,9 @@ export const FormLocation = ({ nextFormStep, prevFormStep, currentStep, orderSte
   })
 
   const { handleSubmit } = useForm()
-  
+
   const [position, setPosition] = useState<any>(null)
-  
+
   const { setFormValues } = useFormData()
 
   const onSubmit = (data: any, e: any) => {
@@ -36,11 +41,11 @@ export const FormLocation = ({ nextFormStep, prevFormStep, currentStep, orderSte
     const map = useMapEvents({
       click(e) {
         //map.locate()
-        setPosition({...map.mouseEventToLatLng(e.originalEvent)})
+        setPosition({ ...map.mouseEventToLatLng(e.originalEvent) })
       },
     })
     return position === null ? null : (
-      <Marker icon={iconMaker} position={ position }></Marker>
+      <Marker icon={iconMaker} position={position}></Marker>
     )
   }
 
@@ -51,7 +56,11 @@ export const FormLocation = ({ nextFormStep, prevFormStep, currentStep, orderSte
   }
 
   return (
-    <FormStyled onSubmit={handleSubmit(onSubmit)} style={currentStep == orderStep ? {} : { display: 'none' }} autoComplete="off">
+    <FormStyled
+      onSubmit={handleSubmit(onSubmit)}
+      style={currentStep == orderStep ? {} : { display: 'none' }}
+      autoComplete="off"
+    >
       <h5>Localização do Cliente</h5>
       <FormLocationContainer>
         <div className="map-style">
@@ -67,9 +76,18 @@ export const FormLocation = ({ nextFormStep, prevFormStep, currentStep, orderSte
             </MapContainer>}
         </div>
         <p>{position && position.lat + ", " + position.lng}</p>
-        <Button variant="success" size="sm" onClick={getPosition}>Obter Localização</Button>
+        <Button
+          variant="success"
+          size="sm"
+          onClick={getPosition}
+        >
+          Obter Localização
+        </Button>
       </FormLocationContainer>
-      <FormButtonNav currentStep={currentStep} prevFormStep={prevFormStep} buttonDisable={position ? false : true} />
+      <FormButtonNav
+        currentStep={currentStep}
+        prevFormStep={prevFormStep}
+        buttonDisable={position ? false : true} />
     </FormStyled>
   )
 }

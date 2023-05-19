@@ -18,7 +18,8 @@ export const FormCompleted = ({ prevFormStep, currentStep }: FormStepButtonsType
   const handleButton = () => {
     const wppMessage = formatWppMessage(data)
     sendDataDb(data)
-    window.location.href = `https://wa.me/?text=${encodeURIComponent(wppMessage)}`; //ENVIA WHATSAPP
+    //send whatsapp message
+    window.location.href = `https://wa.me/?text=${encodeURIComponent(wppMessage)}`; 
   }
 
   return (
@@ -29,7 +30,14 @@ export const FormCompleted = ({ prevFormStep, currentStep }: FormStepButtonsType
           {"position" in data && `${formatWppMessage(data).replaceAll("*", "")}`}
         </span>
       </div>
-      <Button variant="danger" onClick={handleButton} className="btn-send-active" size="sm">Solicitar Ativação</Button>
+      <Button
+        variant="danger"
+        onClick={handleButton}
+        className="btn-send-active"
+        size="sm"
+      >
+        Solicitar Ativação
+      </Button>
       <FormButtonNav currentStep={currentStep} prevFormStep={prevFormStep} />
       <Loading status={LoadingStatus}></Loading>
     </FormStyled>
