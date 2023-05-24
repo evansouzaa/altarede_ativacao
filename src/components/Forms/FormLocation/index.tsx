@@ -7,8 +7,8 @@ import { useForm } from "react-hook-form";
 import { useFormData } from "../../../context/formContext";
 import { useMapEvents, MapContainer, TileLayer, Marker } from "react-leaflet"
 import { FormButtonNav } from "../FormButtonsNav";
-import { FormStepTypes } from "../../../types/types";
-import { Icon, latLng } from "leaflet";
+import { FormStepTypes } from "../../../types";
+import { Icon } from "leaflet";
 
 import iconMap from "../../../assets/img/icon_maker.svg"
 

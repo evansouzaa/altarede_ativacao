@@ -3,7 +3,7 @@ import FormProvider from "../../context/formContext";
 import { FormClient, FormDocNetwork, FormInventoryNetwork, FormCompleted, FormMaterialUsed, FormClientConfig, FormLocation } from '../Forms';
 import { FormCardContainer } from "./styles";
 
-import { FormCardTypes } from "../../types/types";
+import { FormCardTypes } from "../../types";
 
 export default function FormCard({ children, nStep, startStep }: FormCardTypes) {
   const [formStep, setFormStep] = useState(startStep);

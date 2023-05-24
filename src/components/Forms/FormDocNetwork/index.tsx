@@ -2,9 +2,9 @@ import { useForm } from "react-hook-form";
 import { FormStyled } from "../styles";
 import { FormButtonNav } from "../FormButtonsNav";
 import { useFormData } from "../../../context/formContext";
-import { formConfig } from "../../../config/formConfig";
+import { formConfig } from "../../../config/config";
 
-import { FormStepTypes } from "../../../types/types";
+import { FormStepTypes } from "../../../types";
 
 export const FormDocNetwork = ({
   nextFormStep,

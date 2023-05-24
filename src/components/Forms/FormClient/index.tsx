@@ -1,14 +1,14 @@
 import { useForm } from "react-hook-form";
+import { useState } from "react";
 import { useFormData } from "../../../context/formContext";
 import { FormButtonNav } from "../FormButtonsNav";
 import { FormStyled } from "../styles";
-import { formConfig } from "../../../config/formConfig";
-import { useState } from "react";
-import { FormStepTypes } from "../../../types/types";
+import { formConfig } from "../../../config/config";
+import { FormStepTypes } from "../../../types";
 
 export const FormClient = ({ nextFormStep, prevFormStep, currentStep, orderStep }: FormStepTypes) => {
 
-  const [defaultLoginValue, setdefaultLoginValue] = useState(() => {
+  const [defaultLoginValue] = useState(() => {
     const saved: any = localStorage.getItem("estacao");
     const initialValue = JSON.parse(saved);
     return initialValue;

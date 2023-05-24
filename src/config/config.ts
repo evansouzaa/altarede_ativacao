@@ -28,7 +28,7 @@ export const formConfig = {
         { modelo: "EG8145X6" }
     ],
     modelo_roteador: ["WS5200", "AX2", "AX3"],
-    estacao: Array(),
+    estacao: [],
     estacaoMaxDistance: 13,
     area: [...Array.from({ length: 128 }, (_, i) => `A${i + 1}`)],
     cto: [...Array.from({ length: 16 }, (_, i) => i + 1)],

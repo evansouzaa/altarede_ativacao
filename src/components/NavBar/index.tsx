@@ -7,7 +7,7 @@ import { LinkContainer } from 'react-router-bootstrap'
 import { useWindowSize } from '../../hooks';
 
 export const NavBar = () => {
-    let expand = useWindowSize()
+    const expand = useWindowSize()
 
     return (
         <Navbar collapseOnSelect={true} bg="dark" variant="dark" expand={expand} className={expand ? "rounded" : ""}>

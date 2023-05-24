@@ -4,7 +4,7 @@ import { FormButtonNav } from "../FormButtonsNav";
 import { FormStyled } from "../styles";
 
 //types
-import { FormStepTypes } from "../../../types/types";
+import { FormStepTypes } from "../../../types";
 
 export const FormMaterialUsed = ({ nextFormStep, prevFormStep, currentStep, orderStep }: FormStepTypes) => {
 

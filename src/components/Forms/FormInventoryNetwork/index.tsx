@@ -2,9 +2,9 @@ import { useForm } from "react-hook-form";
 import { FormStyled } from "../styles";
 import { FormButtonNav } from "../FormButtonsNav";
 import { useFormData } from "../../../context/formContext";
-import { formConfig } from "../../../config/formConfig";
+import { formConfig } from "../../../config/config";
 
-import { FormStepTypes } from "../../../types/types";
+import { FormStepTypes } from "../../../types";
 
 export const FormInventoryNetwork = ({
   nextFormStep,
@@ -23,6 +23,7 @@ export const FormInventoryNetwork = ({
 
   //verifica se no objeto cliente e seta a quantidade de campos de roteador
   let routerFormControl = 0
+  // eslint-disable-next-line no-prototype-builtins
   if (data.hasOwnProperty("client")) {
     const { qtd_roteador }: any = formConfig.planos.find(element => element.nome === data.client.plano)
     routerFormControl = qtd_roteador

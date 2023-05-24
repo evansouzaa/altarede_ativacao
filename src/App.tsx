@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import FormCard from './components/FormCard';
 import { NavBar } from './components/NavBar';
-import { nStep } from './config/nStep';
+import { nStep } from './config/steps';
 import { MainPage } from './pages/MainPage';
 
 export default function App() {

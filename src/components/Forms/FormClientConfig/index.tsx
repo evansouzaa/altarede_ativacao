@@ -2,14 +2,13 @@ import { useForm } from "react-hook-form";
 import { useFormData } from "../../../context/formContext";
 import { FormButtonNav } from "../FormButtonsNav";
 import { FormStyled } from "../styles";
-import { formConfig } from "../../../config/formConfig";
 
 //types
-import { FormStepTypes } from "../../../types/types";
+import { FormStepTypes } from "../../../types";
 
 export const FormClientConfig = ({ nextFormStep, prevFormStep, currentStep, orderStep }: FormStepTypes) => {
 
-  const { data, setFormValues } = useFormData()
+  const { setFormValues } = useFormData()
 
   const { register, handleSubmit } = useForm()
 
@@ -17,12 +16,6 @@ export const FormClientConfig = ({ nextFormStep, prevFormStep, currentStep, orde
     e.preventDefault()
     setFormValues(data)
     nextFormStep()
-  }
-
-  let ontFormControl = true
-  if (data.hasOwnProperty("client")) {
-    const { roteador_wifi }: any = formConfig.planos.find(element => element.nome === data.client.plano)
-    ontFormControl = roteador_wifi
   }
 
   return (

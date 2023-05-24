@@ -1,5 +1,4 @@
 import { useLayoutEffect, useState } from "react"
-import { json } from "react-router-dom"
 const baseUrl = import.meta.env.VITE_API_BASE_URL
 
 export const useWindowSize = (): boolean => {
@@ -16,7 +15,7 @@ export const useWindowSize = (): boolean => {
 }
 
 export const sendDataDb = (data: any) => {
-  fetch("https://altarede.duckdns.org:3001/ativacao_app", {
+  fetch(baseUrl, {
     method: "POST",
     headers: {
       'Accept': 'application/json',

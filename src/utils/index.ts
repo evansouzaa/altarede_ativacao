@@ -1,4 +1,4 @@
-import { estacoesConfig, formConfig } from "../config/formConfig"
+import { estacoesConfig, formConfig } from "../config/config"
 
 export const formatWppMessage = (data: any) => {
     const messageList = []

@@ -1,7 +1,7 @@
-import { nStep } from "../../../config/nStep"
+import { nStep } from "../../../config/steps"
 import { Button } from "react-bootstrap"
 
-import { FormStepButtonsTypes } from "../../../types/types"
+import { FormStepButtonsTypes } from "../../../types"
 
 export const FormButtonNav = ({ currentStep, prevFormStep, buttonDisable }: FormStepButtonsTypes) => {
     return (
