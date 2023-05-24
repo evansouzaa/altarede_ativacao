@@ -1,8 +1,8 @@
 import ReactLoading from "react-loading"
 import { LoadingContainer } from "./styles";
 
-const Loading = () => (
-    <LoadingContainer statusLoading={true}>
+const Loading = ({ status }: any) => (
+    <LoadingContainer statusLoading={status}>
         <ReactLoading
             type={"spin"}
             color={"rgb(190, 190, 190)"}

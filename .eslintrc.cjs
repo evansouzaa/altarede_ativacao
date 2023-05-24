@@ -14,7 +14,10 @@ module.exports = {
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
         "ecmaVersion": "latest",
-        "sourceType": "module"
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": true
+          }
     },
     "plugins": [
         "react",
@@ -23,5 +26,10 @@ module.exports = {
     "rules": {
         "react/react-in-jsx-scope" : "off",
         "@typescript-eslint/no-explicit-any": "off"
-    }
+    },
+    "settings": {
+        "react": {
+          "version": "detect"
+        }
+      }
 }
