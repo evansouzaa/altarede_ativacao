@@ -13,7 +13,7 @@ export const FormCompleted = ({ prevFormStep, currentStep }: FormStepButtonsType
 
   const { data } = useFormData()
 
-  const [LoadingStatus] = useState(false)
+  const [LoadingStatus] = useState(true)
 
   const handleButton = () => {
     const wppMessage = formatWppMessage(data)
