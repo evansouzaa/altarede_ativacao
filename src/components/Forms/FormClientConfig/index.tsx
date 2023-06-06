@@ -43,6 +43,7 @@ export const FormClientConfig = ({ nextFormStep, prevFormStep, currentStep, orde
           placeholder='Digite a senha'
           id='client_pass'
           {...register("client_config.client_pass")}
+          minLength={8}
         />
       </div>
       <br />

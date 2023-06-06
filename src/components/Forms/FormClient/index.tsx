@@ -9,7 +9,7 @@ import { FormStepTypes } from "../../../types";
 export const FormClient = ({ nextFormStep, prevFormStep, currentStep, orderStep }: FormStepTypes) => {
 
   const [defaultLoginValue] = useState(() => {
-    const saved: any = localStorage.getItem("estacao");
+    const saved: any = localStorage.getItem("login_prefix");
     const initialValue = JSON.parse(saved);
     return initialValue;
   })

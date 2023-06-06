@@ -29,10 +29,11 @@ export const formConfig = {
     ],
     modelo_roteador: ["WS5200", "AX2", "AX3"],
     estacao: Array<string>(),
-    estacaoMaxDistance: 13,
+    login_prefix: Array<string>(),
     area: [...Array.from({ length: 128 }, (_, i) => `A${i + 1}`)],
     cto: [...Array.from({ length: 16 }, (_, i) => i + 1)],
     porta: [...Array.from({ length: 16 }, (_, i) => i + 1)],
+    estacaoMaxDistance: 13, //max distance station to show options
 }
 
 export const estacoesConfig = [
@@ -68,10 +69,29 @@ getPosition()
     .then((position) => {
         //calc distance station
         const distances = calcGeolocationDistance(position.coords.latitude, position.coords.longitude)
-        // console.log(distances.map(element => element.name))
-        // console.log(position.coords.latitude, position.coords.longitude)
-        formConfig.estacao = distances.map(element => element.name)
-        localStorage.setItem('estacao', JSON.stringify(formConfig.estacao))
+
+        if (distances.length == 0) {
+            alert("Fora da área de cobertura... ")
+            alert("Verifique sua localização!")
+
+            //set station
+            formConfig.estacao = ["ESTAÇÃO INDISPONÍVEL..."]
+            localStorage.setItem('estacao', JSON.stringify(formConfig.estacao))
+
+            //set login_prefix
+            formConfig.login_prefix = [""]
+            localStorage.setItem('login_prefix', JSON.stringify(formConfig.login_prefix))
+        } else {
+            //set station
+            formConfig.estacao = distances.map(element => element.name)
+            localStorage.setItem('estacao', JSON.stringify(formConfig.estacao))
+            
+            //set login_prefix
+            formConfig.login_prefix = ["ESTAÇÃO INDISPONÍVEL..."]
+            localStorage.setItem('login_prefix', JSON.stringify(formConfig.login_prefix))
+        }
+
+
     })
     .catch((err) => {
         console.error(err.message);
