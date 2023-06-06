@@ -87,7 +87,7 @@ getPosition()
             localStorage.setItem('estacao', JSON.stringify(formConfig.estacao))
             
             //set login_prefix
-            formConfig.login_prefix = ["ESTAÇÃO INDISPONÍVEL..."]
+            formConfig.login_prefix = distances.map(element => element.name)
             localStorage.setItem('login_prefix', JSON.stringify(formConfig.login_prefix))
         }
 
