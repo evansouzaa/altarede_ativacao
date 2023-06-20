@@ -14,8 +14,8 @@ export const useWindowSize = (): boolean => {
   return windowSize
 }
 
-export const sendDataDb = (data: any) => {
-  fetch(baseUrl, {
+export const sendDataDb = async (data: any) => {
+  const response = fetch(baseUrl, {
     method: "POST",
     headers: {
       'Accept': 'application/json',
@@ -28,4 +28,5 @@ export const sendDataDb = (data: any) => {
     console.log(response)
     return response
   })
+  return response
 }

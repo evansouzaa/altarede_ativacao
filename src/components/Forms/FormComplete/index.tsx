@@ -13,14 +13,19 @@ export const FormCompleted = ({ prevFormStep, currentStep }: FormStepButtonsType
 
   const { data } = useFormData()
 
-  const [LoadingStatus] = useState(true)
+  const [LoadingStatus, setLoadinStatus] = useState(true)
 
   const handleButton = () => {
-    const wppMessage = formatWppMessage(data)
-    sendDataDb(data)
-    //console.log(data)
-    //send whatsapp message
-    window.location.href = `https://wa.me/?text=${encodeURIComponent(wppMessage)}`; 
+    setLoadinStatus(false)
+    sendDataDb(data).then(function (response) {
+      if (response.error) {
+        setLoadinStatus(true)
+        alert("Erro na requisição! Tente novamente ou atualize a pagina!")
+      }
+      //setLoadinStatus(true)
+      const wppMessage = formatWppMessage(data)
+      window.location.href = `https://wa.me/?text=${encodeURIComponent(wppMessage)}`;
+    })
   }
 
   return (
