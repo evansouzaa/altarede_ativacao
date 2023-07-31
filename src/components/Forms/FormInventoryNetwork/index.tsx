@@ -21,14 +21,15 @@ export const FormInventoryNetwork = ({
     nextFormStep()
   }
 
-  //verifica se no objeto cliente e seta a quantidade de campos de roteador
+  //verifica se no objeto cliente e seta a quantidade de campos de roteador e se possui onu_wifi true false
   let routerFormControl = 0
+  let ont_wifiFormControl = false
   // eslint-disable-next-line no-prototype-builtins
   if (data.hasOwnProperty("client")) {
-    const { qtd_roteador }: any = formConfig.planos.find(element => element.nome === data.client.plano)
+    const { qtd_roteador, ont_wifi }: any = formConfig.planos.find(element => element.nome === data.client.plano)
     routerFormControl = qtd_roteador
+    ont_wifiFormControl = ont_wifi
   }
-
 
   return (
     <FormStyled
@@ -37,20 +38,37 @@ export const FormInventoryNetwork = ({
       autoComplete="off"
     >
       <h5>Inventário de Rede</h5>
-      <div>
-        <label htmlFor="modelo_ont">Modelo da Ont</label>
-        <select
-          className="form-control"
-          id='modelo_ont'
-          {...register("network_actives.modelo_ont")}
-          required
-        >
-          <option value="">Selecione...</option>
-          {formConfig.modelo_ont.map((item, index) => (
-            <option value={item.modelo} key={index} >{item.modelo}</option>
-          ))}
-        </select>
-      </div>
+      {ont_wifiFormControl ? (
+        <div>
+          <label htmlFor="modelo_ont">Modelo da Ont</label>
+          <select
+            className="form-control"
+            id='modelo_ont'
+            {...register("network_actives.modelo_ont")}
+            required
+          >
+            <option value="">Selecione...</option>
+            {formConfig.modelo_ont_wifi.map((item, index) => (
+              <option value={item.modelo} key={index} >{item.modelo}</option>
+            ))}
+          </select>
+        </div>
+      ) : (
+        <div>
+          <label htmlFor="modelo_ont">Modelo da Ont</label>
+          <select
+            className="form-control"
+            id='modelo_ont'
+            {...register("network_actives.modelo_ont")}
+            required
+          >
+            <option value="">Selecione...</option>
+            {formConfig.modelo_ont.map((item, index) => (
+              <option value={item.modelo} key={index} >{item.modelo}</option>
+            ))}
+          </select>
+        </div>
+      )}
       <div>
         <label htmlFor="serial_ont">Serial Ont</label>
         <input
