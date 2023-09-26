@@ -33,7 +33,7 @@ export const formConfig = {
     estacao: Array<string>(),
     login_prefix: Array<string>(),
     area: [...Array.from({ length: 128 }, (_, i) => `A${i + 1}`)],
-    cto: [...Array.from({ length: 16 }, (_, i) => i + 1)],
+    cto: [...Array.from({ length: 24 }, (_, i) => i + 1)],
     porta: [...Array.from({ length: 16 }, (_, i) => i + 1)],
     estacaoMaxDistance: 13, //max distance station to show options
 }
