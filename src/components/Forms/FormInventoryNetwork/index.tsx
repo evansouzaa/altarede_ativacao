@@ -16,8 +16,6 @@ export const FormInventoryNetwork = ({
   const { register, handleSubmit } = useForm()
   const { data, setFormValues } = useFormData()
 
-  console.log(data)
-
   const onSubmit = (data: any, e: any) => {
     e.preventDefault()
     setFormValues(data)
