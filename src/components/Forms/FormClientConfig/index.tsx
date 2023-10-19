@@ -20,11 +20,11 @@ export const FormClientConfig = ({ nextFormStep, prevFormStep, currentStep, orde
     nextFormStep()
   }
 
-  let ont_wifiFormControl = false
+  let wifiFormControl = false
   // eslint-disable-next-line no-prototype-builtins
   if (data.hasOwnProperty("client")) {
-    const { ont_wifi }: any = formConfig.planos.find(element => element.nome === data.client.plano)
-    ont_wifiFormControl = ont_wifi
+    const { wifi }: any = formConfig.planos.find(element => element.nome === data.client.plano)
+    wifiFormControl = wifi
   }
 
   let router_wifiFormControl = false
@@ -44,7 +44,7 @@ export const FormClientConfig = ({ nextFormStep, prevFormStep, currentStep, orde
     >
       <h5>Configurações do Cliente</h5>
 
-      {(ont_wifiFormControl || router_wifiFormControl && presetRouter) && (
+      {(wifiFormControl || router_wifiFormControl && presetRouter) && (
         <div>
           <label htmlFor="client_ssid">SSiD</label>
           <input
@@ -57,7 +57,7 @@ export const FormClientConfig = ({ nextFormStep, prevFormStep, currentStep, orde
         </div>
       )}
 
-      {(ont_wifiFormControl || router_wifiFormControl && presetRouter) && (
+      {(wifiFormControl || router_wifiFormControl && presetRouter) && (
         <div>
           <label htmlFor="client_pass">Senha</label>
           <input
@@ -100,7 +100,7 @@ export const FormClientConfig = ({ nextFormStep, prevFormStep, currentStep, orde
 
         </div>
 
-        {(ont_wifiFormControl || router_wifiFormControl && presetRouter) && (
+        {(wifiFormControl || router_wifiFormControl && presetRouter) && (
           <div className="row">
             <div className="col-6 form-check form-switch">
               <input
@@ -108,6 +108,7 @@ export const FormClientConfig = ({ nextFormStep, prevFormStep, currentStep, orde
                 type="checkbox"
                 id="desmembrar_wifi5"
                 {...register("client_config.desmembrar_wifi5")}
+                defaultChecked
               />
               <label className="form-check-label" htmlFor="desmembrar_wifi5">Desmembrar Wifi5</label>
             </div>

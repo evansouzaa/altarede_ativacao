@@ -9,9 +9,9 @@ import { FormStepTypes } from "../../../types";
 export const FormClient = ({ nextFormStep, prevFormStep, currentStep, orderStep }: FormStepTypes) => {
 
   const [defaultLoginValue] = useState(() => {
-    const saved: any = localStorage.getItem("login_prefix");
-    const initialValue = JSON.parse(saved);
-    return initialValue;
+    // eslint-disable-next-line
+    // @ts-ignore
+    return JSON.parse(localStorage.getItem("login_prefix"))
   })
 
   const { register, handleSubmit } = useForm({
