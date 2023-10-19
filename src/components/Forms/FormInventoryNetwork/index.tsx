@@ -34,7 +34,7 @@ export const FormInventoryNetwork = ({
 
   const [inputValue, setInputValue] = useState('');
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(e.target.value);
+    setInputValue(e.target.value.toUpperCase());
   };
 
   //verifica se no objeto cliente e seta a quantidade de campos de roteador e se possui onu_wifi true false
