@@ -1,11 +1,11 @@
-import { useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { useFormData } from "../../../context/formContext";
 import { FormButtonNav } from "../FormButtonsNav";
 import { FormStyled } from "../styles";
 import { formConfig } from "../../../config/config";
 
 //types
-import { FormStepTypes } from "../../../types";
+import { FormStepTypes, FormValuesType } from "../../../types";
 import { useState } from "react";
 
 export const FormClientConfig = ({ nextFormStep, prevFormStep, currentStep, orderStep }: FormStepTypes) => {
@@ -14,23 +14,17 @@ export const FormClientConfig = ({ nextFormStep, prevFormStep, currentStep, orde
 
   const { register, handleSubmit } = useForm()
 
-  const onSubmit = (data: unknown, e: any) => {
-    e.preventDefault()
+  const onSubmit: SubmitHandler<FormValuesType> = (data) => {
     setFormValues(data)
     nextFormStep()
   }
 
   let wifiFormControl = false
-  // eslint-disable-next-line no-prototype-builtins
-  if (data.hasOwnProperty("client")) {
-    const { wifi }: any = formConfig.planos.find(element => element.nome === data.client.plano)
-    wifiFormControl = wifi
-  }
-
   let router_wifiFormControl = false
   // eslint-disable-next-line no-prototype-builtins
   if (data.hasOwnProperty("client")) {
-    const { qtd_roteador }: any = formConfig.planos.find(element => element.nome === data.client.plano)
+    const { wifi, qtd_roteador }: any = formConfig.planos.find(element => element.nome === data.client.plano)
+    wifiFormControl = wifi
     router_wifiFormControl = qtd_roteador == 1 ? true : false
   }
 
@@ -100,8 +94,8 @@ export const FormClientConfig = ({ nextFormStep, prevFormStep, currentStep, orde
 
         </div>
 
-        {(wifiFormControl || router_wifiFormControl && presetRouter) && (
-          <div className="row">
+        <div className="row">
+          {(wifiFormControl || router_wifiFormControl && presetRouter) && (
             <div className="col-6 form-check form-switch">
               <input
                 className="form-check-input"
@@ -112,8 +106,18 @@ export const FormClientConfig = ({ nextFormStep, prevFormStep, currentStep, orde
               />
               <label className="form-check-label" htmlFor="desmembrar_wifi5">Desmembrar Wifi5</label>
             </div>
+          )}
+
+          <div className="col-6 form-check form-switch">
+            <input
+              className="form-check-input"
+              type="checkbox"
+              id="mudanca_endereco"
+              {...register("client_config.mudanca_endereco")}
+            />
+            <label className="form-check-label" htmlFor="mudanca_endereco">Mudança Endereço</label>
           </div>
-        )}
+        </div>
 
       </div>
 

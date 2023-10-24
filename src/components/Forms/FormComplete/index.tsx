@@ -13,9 +13,6 @@ export const FormCompleted = ({ prevFormStep, currentStep }: FormStepButtonsType
 
   const { data } = useFormData()
 
-  //log all data
-  //console.log(data)
-
   const [LoadingStatus, setLoadinStatus] = useState(true)
 
   const handleButton = () => {

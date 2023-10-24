@@ -1,10 +1,10 @@
-import { useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { FormStyled } from "../styles";
 import { FormButtonNav } from "../FormButtonsNav";
 import { useFormData } from "../../../context/formContext";
 import { formConfig } from "../../../config/config";
 
-import { FormStepTypes } from "../../../types";
+import { FormStepTypes, FormValuesType } from "../../../types";
 import { useState } from "react";
 
 export const FormInventoryNetwork = ({
@@ -16,8 +16,7 @@ export const FormInventoryNetwork = ({
   const { register, handleSubmit } = useForm()
   const { data, setFormValues } = useFormData()
 
-  const onSubmit = (data: any, e: any) => {
-    e.preventDefault()
+  const onSubmit: SubmitHandler<FormValuesType> = (data) => {
     setFormValues(data)
     nextFormStep()
   }
@@ -26,8 +25,8 @@ export const FormInventoryNetwork = ({
   const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const option = e.target.value;
     if (option) {
-      const { sn_prefix }: any = formConfig.modelo_ont.find(element => element.modelo === option)
-      sn_prefix ? setPrefix(sn_prefix) : ""
+      const prefix = formConfig.modelo_ont.find(element => element.modelo === option)
+      prefix ? setPrefix(prefix.sn_prefix) : ""
     }
     setInputValue("")
   };

@@ -1,24 +1,28 @@
-import { useForm } from "react-hook-form";
+import { useForm, SubmitHandler } from "react-hook-form";
 import { useState } from "react";
 import { useFormData } from "../../../context/formContext";
 import { FormButtonNav } from "../FormButtonsNav";
 import { FormStyled } from "../styles";
 import { formConfig } from "../../../config/config";
-import { FormStepTypes } from "../../../types";
+import { FormStepTypes, FormValuesType } from "../../../types";
 
 export const FormClient = ({ nextFormStep, prevFormStep, currentStep, orderStep }: FormStepTypes) => {
 
-  const [defaultLoginValue] = useState(() => {
-    // eslint-disable-next-line
-    // @ts-ignore
-    return JSON.parse(localStorage.getItem("login_prefix"))
+  const [loginPrefix] = useState(() => {
+    const storedData = localStorage.getItem("login_prefix" || "")
+    if (storedData) {
+      const parsedData = JSON.parse(storedData);
+      if (parsedData) {
+        return parsedData[parsedData.length - 1].match(/^[A-Z]*/)
+      }
+    }
   })
 
   const { register, handleSubmit } = useForm({
     defaultValues: {
       client: {
         nome: "",
-        login: defaultLoginValue[defaultLoginValue.length - 1].match(/^[A-Z]*/),
+        login: loginPrefix,
         plano: ""
       }
     }
@@ -26,8 +30,7 @@ export const FormClient = ({ nextFormStep, prevFormStep, currentStep, orderStep 
 
   const { setFormValues } = useFormData()
 
-  const onSubmit = (data: any, e: any) => {
-    e.preventDefault()
+  const onSubmit: SubmitHandler<FormValuesType> = (data) => {
     setFormValues(data)
     nextFormStep()
   }

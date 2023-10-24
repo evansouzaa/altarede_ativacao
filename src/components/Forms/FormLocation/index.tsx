@@ -3,11 +3,11 @@ import { FormLocationContainer } from "./styles";
 import { FormStyled } from "../styles";
 import { useState } from "react"
 import { Button } from "react-bootstrap";
-import { useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { useFormData } from "../../../context/formContext";
 import { useMapEvents, MapContainer, TileLayer, Marker } from "react-leaflet"
 import { FormButtonNav } from "../FormButtonsNav";
-import { FormStepTypes } from "../../../types";
+import { FormStepTypes, FormValuesType } from "../../../types";
 import { Icon } from "leaflet";
 
 import iconMap from "../../../assets/img/icon_maker.svg"
@@ -31,8 +31,13 @@ export const FormLocation = ({
 
   const { setFormValues } = useFormData()
 
-  const onSubmit = (data: any, e: any) => {
-    e.preventDefault()
+  // const onSubmit = (data: any, e: any) => {
+  //   e.preventDefault()
+  //   setFormValues({ position })
+  //   nextFormStep()
+  // }
+
+  const onSubmit: SubmitHandler<FormValuesType> = () => {
     setFormValues({ position })
     nextFormStep()
   }

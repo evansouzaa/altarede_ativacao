@@ -1,6 +1,8 @@
 import { estacoesConfig, formConfig } from "../config/config"
+import { MessageWppTypes } from "../types"
 
-export const formatWppMessage = (data: any) => {
+export const formatWppMessage = (data: MessageWppTypes) => {
+
     const {
         client,
         network_doc,
@@ -13,6 +15,7 @@ export const formatWppMessage = (data: any) => {
     const messageList = []
 
     messageList.push(`⚠ Ativação Ont ⚠`)
+    client_config.mudanca_endereco && messageList.push(`⛔ Mudança endereço ⛔`)
 
     messageList.push(`=== Informações do Cliente ===`)
     client.nome && messageList.push(`*Nome:* ${client.nome}`)

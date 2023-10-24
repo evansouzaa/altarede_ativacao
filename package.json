@@ -1,7 +1,7 @@
 {
   "name": "altarede_ativacao",
   "private": true,
-  "version": "1.5.0",
+  "version": "1.7.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -26,6 +26,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.23.2",
+    "@babel/preset-typescript": "^7.23.2",
     "@storybook/addon-essentials": "^7.0.4",
     "@storybook/addon-interactions": "^7.0.4",
     "@storybook/addon-links": "^7.0.4",
