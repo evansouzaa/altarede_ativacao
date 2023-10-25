@@ -125,39 +125,49 @@ export const estacoesConfig = [
 
 ]
 
-export function getPosition(options?: PositionOptions): Promise<any> {
+export function getPosition(): Promise<any> {
     return new Promise((resolve, reject) =>
-        navigator.geolocation.getCurrentPosition(resolve, reject, options)
+        navigator.geolocation.getCurrentPosition(resolve, reject, { enableHighAccuracy: true })
     );
 }
 
 //get position and calculate distance to stations
 getPosition().then((position) => {
-        //calc distance station
-        //const distances = calcGeolocationDistance(-22.517033371269164, -41.92475390556813)
-        const distances = calcGeolocationDistance(position.coords.latitude, position.coords.longitude)
+    //calc distance station
+    //const distances = calcGeolocationDistance(-22.517033371269164, -41.92475390556813)
+    const distances = calcGeolocationDistance(position.coords.latitude, position.coords.longitude)
 
-        if (distances.length == 0) {
-            alert("Fora da área de cobertura... ")
-            alert("Verifique sua localização!")
+    if (distances.length == 0) {
+        alert("Fora da área de cobertura... ")
+        alert("Verifique sua localização!")
 
-            //set station false
-            formConfig.estacao = ["ESTAÇÃO INDISPONÍVEL..."]
-            localStorage.setItem('estacao', JSON.stringify(formConfig.estacao))
+        //set station false
+        formConfig.estacao = ["ESTAÇÃO INDISPONÍVEL..."]
+        localStorage.setItem('estacao', JSON.stringify(formConfig.estacao))
 
-            //set login_prefix false
-            formConfig.login_prefix = [""]
-            localStorage.setItem('login_prefix', JSON.stringify(formConfig.login_prefix))
-        } else {
-            //set station
-            formConfig.estacao = distances.map(element => element.name)
-            localStorage.setItem('estacao', JSON.stringify(formConfig.estacao))
+        //set login_prefix false
+        formConfig.login_prefix = ["ERROR"]
+        localStorage.setItem('login_prefix', JSON.stringify(formConfig.login_prefix))
+    } else {
+        //set station
+        formConfig.estacao = distances.map(element => element.name)
+        localStorage.setItem('estacao', JSON.stringify(formConfig.estacao))
 
-            //set login_prefix
-            formConfig.login_prefix = distances.map(element => element.name)
-            localStorage.setItem('login_prefix', JSON.stringify(formConfig.login_prefix))
-        }
-    })
+        //set login_prefix
+        formConfig.login_prefix = distances.map(element => element.name)
+        localStorage.setItem('login_prefix', JSON.stringify(formConfig.login_prefix))
+    }
+})
     .catch((err) => {
+        alert("É necessário permitir a localização!")
+        getPosition()
+
+        //set station false
+        formConfig.estacao = ["ESTAÇÃO INDISPONÍVEL..."]
+        localStorage.setItem('estacao', JSON.stringify(formConfig.estacao))
+
+        //set login_prefix false
+        formConfig.login_prefix = ["ERROR"]
+        localStorage.setItem('login_prefix', JSON.stringify(formConfig.login_prefix))
         console.error(err.message);
     });
