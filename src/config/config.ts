@@ -2,15 +2,16 @@ import { calcGeolocationDistance } from "../utils"
 
 export const formConfig = {
     planos: [
-        { nome: "SOCIAL 60MB", qtd_roteador: 0, wifi: false },
-        { nome: "FIBER 350MB", qtd_roteador: 0, wifi: false },
-        { nome: "FIBER+ 500MB WIFI 5", qtd_roteador: 1, wifi: false },
-        { nome: "FIBER+ 500MB WIFI 5 (ONT WIFI)", qtd_roteador: 0, wifi: true },
-        { nome: "HOME OFFICE 600MB WIFI 5 MESH", qtd_roteador: 2, wifi: false },
-        { nome: "SEM LIMITES 1GB WIFI 6E", qtd_roteador: 1, wifi: false },
-        { nome: "SEM LIMITES 1GB WIFI 6E (ONT WIFI)", qtd_roteador: 0, wifi: true },
-        { nome: "WIFI NA CASA TODA 1GB WIFI 5 MESH 360", qtd_roteador: 3, wifi: false },
-        { nome: "CASA INTELIGENTE 1GB WIFI 6E MESH 360", qtd_roteador: 3, wifi: false }
+        { nome: "SOCIAL 60MB", qtd_roteador: 0, ont_wifi: false },
+        { nome: "FIBER 350MB", qtd_roteador: 0, wifont_wifii: false },
+        { nome: "FIBER+ 500MB WIFI 5", qtd_roteador: 1, ont_wifi: false },
+        { nome: "FIBER+ 500MB WIFI 5 (ONT WIFI)", qtd_roteador: 0, ont_wifi: true },
+        { nome: "500 MEGA SUPER WIFI 5 X2", qtd_roteador: 2, ont_wifi: false },
+        { nome: "HOME OFFICE 600MB WIFI 5 MESH", qtd_roteador: 2, ont_wifi: false },
+        { nome: "SEM LIMITES 1GB WIFI 6E", qtd_roteador: 1, ont_wifi: false },
+        { nome: "SEM LIMITES 1GB WIFI 6E (ONT WIFI)", qtd_roteador: 0, ont_wifi: true },
+        { nome: "WIFI NA CASA TODA 1GB WIFI 5 MESH 360", qtd_roteador: 3, ont_wifi: false },
+        { nome: "CASA INTELIGENTE 1GB WIFI 6E MESH 360", qtd_roteador: 3, ont_wifi: false }
     ],
     modelo_ont: [
         { modelo: "HG8010H", sn_prefix: "48575443", ont_wifi: false },

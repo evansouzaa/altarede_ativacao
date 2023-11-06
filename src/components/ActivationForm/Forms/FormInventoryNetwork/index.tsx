@@ -1,10 +1,10 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 import { FormStyled } from "../styles";
 import { FormButtonNav } from "../FormButtonsNav";
-import { useFormData } from "../../../context/formContext";
-import { formConfig } from "../../../config/config";
+import { useFormData } from "../../../../context/formContext";
+import { formConfig } from "../../../../config/config";
 
-import { FormStepTypes, FormValuesType } from "../../../types";
+import { FormStepTypes, FormValuesType } from "../../../../types";
 import { useState } from "react";
 
 export const FormInventoryNetwork = ({
@@ -38,12 +38,12 @@ export const FormInventoryNetwork = ({
 
   //verifica se no objeto cliente e seta a quantidade de campos de roteador e se possui onu_wifi true false
   let routerFormControl = 0
-  let wifiFormControl = false
+  let ontWifiFormControl = false
   // eslint-disable-next-line no-prototype-builtins
   if (data.hasOwnProperty("client")) {
-    const { qtd_roteador, wifi }: any = formConfig.planos.find(element => element.nome === data.client.plano)
+    const { qtd_roteador, ont_wifi }: any = formConfig.planos.find(element => element.nome === data.client.plano)
     routerFormControl = qtd_roteador
-    wifiFormControl = wifi
+    ontWifiFormControl = ont_wifi
   }
 
   //configure list ont_wifi / ont_bridge
@@ -60,7 +60,7 @@ export const FormInventoryNetwork = ({
       <h5>Inventário de Rede</h5>
       <div>
         <label htmlFor="modelo_ont">Modelo da Ont</label>
-        {wifiFormControl ? (
+        {ontWifiFormControl ? (
           <select
             className="form-control"
             id='modelo_ont'
@@ -96,7 +96,7 @@ export const FormInventoryNetwork = ({
           placeholder='Somente 8 ultimos caracteres'
           id='serial_ont'
           {...register("network_actives.serial_ont", {
-            pattern: /[A-Fa-f0-9]$/,
+            pattern: /\b[0-9A-F]+\b/,
             setValueAs: value => prefix + value
           })}
           maxLength={8}
@@ -130,7 +130,9 @@ export const FormInventoryNetwork = ({
             type="text"
             placeholder='Digite o SN Roteador'
             id='serial_roteador'
-            {...register(`network_actives.serial_roteador_${index + 1}`)}
+            {...register(`network_actives.serial_roteador_${index + 1}`, {
+              setValueAs: value => value.toUpperCase()
+            })}
             required
           />
         </div>

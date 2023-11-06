@@ -1,10 +1,10 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 import { FormStyled } from "../styles";
 import { FormButtonNav } from "../FormButtonsNav";
-import { useFormData } from "../../../context/formContext";
-import { formConfig } from "../../../config/config";
+import { useFormData } from "../../../../context/formContext";
+import { formConfig } from "../../../../config/config";
 
-import { FormStepTypes, FormValuesType } from "../../../types";
+import { FormStepTypes, FormValuesType } from "../../../../types";
 
 export const FormDocNetwork = ({
   nextFormStep,

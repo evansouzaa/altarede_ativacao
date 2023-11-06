@@ -1,7 +1,8 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import FormCard from './components/FormCard';
+import { FormCard as FormActivation } from './components/ActivationForm/FormCard';
+import { FormCard as ChangeOntForm } from './components/ChangeOntForm/FormCard';
 import { NavBar } from './components/NavBar';
-import { nStep } from './config/steps';
+import { formStepsActivation, formStepsChangeOnt } from './config/steps';
 import { MainPage } from './pages/MainPage';
 
 export default function App() {
@@ -11,7 +12,8 @@ export default function App() {
         <NavBar></NavBar>
         <Routes>
           <Route path="/" element={<MainPage />} />
-          <Route path="/ativacao" element={<FormCard nStep={nStep.steps} startStep={nStep.startStep} />} />
+          <Route path="/ativacao" element={<FormActivation nStep={formStepsActivation.steps} startStep={formStepsActivation.startStep} />} />
+          <Route path="/troca_ont" element={<ChangeOntForm nStep={formStepsChangeOnt.steps} startStep={formStepsChangeOnt.startStep} />} />
         </Routes>
       </BrowserRouter>
     </div>

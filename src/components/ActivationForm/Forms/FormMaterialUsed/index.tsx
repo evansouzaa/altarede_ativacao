@@ -1,10 +1,10 @@
 import { SubmitHandler, useForm } from "react-hook-form";
-import { useFormData } from "../../../context/formContext";
+import { useFormData } from "../../../../context/formContext";
 import { FormButtonNav } from "../FormButtonsNav";
 import { FormStyled } from "../styles";
 
 //types
-import { FormStepTypes, FormValuesType } from "../../../types";
+import { FormStepTypes, FormValuesType } from "../../../../types";
 
 export const FormMaterialUsed = ({ nextFormStep, prevFormStep, currentStep, orderStep }: FormStepTypes) => {
 

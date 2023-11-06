@@ -4,13 +4,13 @@ import { FormStyled } from "../styles";
 import { useState } from "react"
 import { Button } from "react-bootstrap";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { useFormData } from "../../../context/formContext";
+import { useFormData } from "../../../../context/formContext";
 import { useMapEvents, MapContainer, TileLayer, Marker } from "react-leaflet"
 import { FormButtonNav } from "../FormButtonsNav";
-import { FormStepTypes, FormValuesType } from "../../../types";
+import { FormStepTypes, FormValuesType } from "../../../../types";
 import { Icon } from "leaflet";
 
-import iconMap from "../../../assets/img/icon_maker.svg"
+import iconMap from "../../../../assets/img/icon_maker.svg"
 
 export const FormLocation = ({
   nextFormStep,

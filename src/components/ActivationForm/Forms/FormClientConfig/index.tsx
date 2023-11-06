@@ -1,11 +1,11 @@
 import { SubmitHandler, useForm } from "react-hook-form";
-import { useFormData } from "../../../context/formContext";
+import { useFormData } from "../../../../context/formContext";
 import { FormButtonNav } from "../FormButtonsNav";
 import { FormStyled } from "../styles";
-import { formConfig } from "../../../config/config";
+import { formConfig } from "../../../../config/config";
 
 //types
-import { FormStepTypes, FormValuesType } from "../../../types";
+import { FormStepTypes, FormValuesType } from "../../../../types";
 import { useState } from "react";
 
 export const FormClientConfig = ({ nextFormStep, prevFormStep, currentStep, orderStep }: FormStepTypes) => {
@@ -19,12 +19,12 @@ export const FormClientConfig = ({ nextFormStep, prevFormStep, currentStep, orde
     nextFormStep()
   }
 
-  let wifiFormControl = false
+  let ontWifiFormControl = false
   let router_wifiFormControl = false
   // eslint-disable-next-line no-prototype-builtins
   if (data.hasOwnProperty("client")) {
-    const { wifi, qtd_roteador }: any = formConfig.planos.find(element => element.nome === data.client.plano)
-    wifiFormControl = wifi
+    const { ont_wifi, qtd_roteador }: any = formConfig.planos.find(element => element.nome === data.client.plano)
+    ontWifiFormControl = ont_wifi
     router_wifiFormControl = qtd_roteador == 1 ? true : false
   }
 
@@ -38,7 +38,7 @@ export const FormClientConfig = ({ nextFormStep, prevFormStep, currentStep, orde
     >
       <h5>Configurações do Cliente</h5>
 
-      {(wifiFormControl || router_wifiFormControl && presetRouter) && (
+      {(ontWifiFormControl || router_wifiFormControl && presetRouter) && (
         <div>
           <label htmlFor="client_ssid">SSiD</label>
           <input
@@ -51,7 +51,7 @@ export const FormClientConfig = ({ nextFormStep, prevFormStep, currentStep, orde
         </div>
       )}
 
-      {(wifiFormControl || router_wifiFormControl && presetRouter) && (
+      {(ontWifiFormControl || router_wifiFormControl && presetRouter) && (
         <div>
           <label htmlFor="client_pass">Senha</label>
           <input
@@ -95,7 +95,7 @@ export const FormClientConfig = ({ nextFormStep, prevFormStep, currentStep, orde
         </div>
 
         <div className="row">
-          {(wifiFormControl || router_wifiFormControl && presetRouter) && (
+          {(ontWifiFormControl || router_wifiFormControl && presetRouter) && (
             <div className="col-6 form-check form-switch">
               <input
                 className="form-check-input"

@@ -1,7 +1,7 @@
-import { nStep } from "../../../config/steps"
+import { formStepsActivation } from "../../../../config/steps"
 import { Button } from "react-bootstrap"
 
-import { FormStepButtonsTypes } from "../../../types"
+import { FormStepButtonsTypes } from "../../../../types"
 
 export const FormButtonNav = ({ currentStep, prevFormStep, buttonDisable }: FormStepButtonsTypes) => {
     return (
@@ -15,7 +15,7 @@ export const FormButtonNav = ({ currentStep, prevFormStep, buttonDisable }: Form
             </Button>
             <Button
                 type="submit"
-                disabled={currentStep == nStep.steps - 1 || buttonDisable}
+                disabled={currentStep == formStepsActivation.steps - 1 || buttonDisable}
             >
                 Proximo
             </Button>

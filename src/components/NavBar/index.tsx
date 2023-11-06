@@ -35,7 +35,7 @@ export const NavBar = () => {
                             <LinkContainer to="/ativacao">
                                 <Nav.Link>Ativação</Nav.Link>
                             </LinkContainer>
-                            <LinkContainer to="/trocar_ont">
+                            <LinkContainer to="/troca_ont">
                                 <Nav.Link disabled={true}>Trocar Ont</Nav.Link>
                             </LinkContainer>
                             <NavDropdown

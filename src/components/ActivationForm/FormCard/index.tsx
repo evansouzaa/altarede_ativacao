@@ -1,11 +1,11 @@
 import { useState } from "react";
-import FormProvider from "../../context/formContext";
+import FormProvider from "../../../context/formContext";
 import { FormClient, FormDocNetwork, FormInventoryNetwork, FormCompleted, FormMaterialUsed, FormClientConfig, FormLocation } from '../Forms';
 import { FormCardContainer } from "./styles";
 
-import { FormCardTypes } from "../../types";
+import { FormCardTypes } from "../../../types";
 
-export default function FormCard({ children, nStep, startStep }: FormCardTypes) {
+export function FormCard({ children, nStep, startStep }: FormCardTypes) {
   const [formStep, setFormStep] = useState(startStep);
   const nextFormStep = () => setFormStep((currentStep) => currentStep + 1);
   const prevFormStep = () => setFormStep((currentStep) => currentStep - 1);
@@ -13,7 +13,7 @@ export default function FormCard({ children, nStep, startStep }: FormCardTypes) 
   return (
     <FormProvider>
       <FormCardContainer>
-        <h5>Ativação de ONU Altarede</h5>
+        <h5>Ativação de ONT Altarede</h5>
         <span>Passo {formStep + 1} de {nStep}</span>
 
         {children}

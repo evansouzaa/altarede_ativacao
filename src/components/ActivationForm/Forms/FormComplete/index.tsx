@@ -1,12 +1,12 @@
 import { FormButtonNav } from "../";
-import { useFormData } from "../../../context/formContext";
-import { nStep } from "../../../config/steps";
+import { useFormData } from "../../../../context/formContext";
+import { formStepsActivation } from "../../../../config/steps";
 import { FormStyled } from "../styles";
 import { Button } from "react-bootstrap";
-import { sendDataDb } from "../../../hooks";
-import { FormStepButtonsTypes } from "../../../types"
-import { formatWppMessage } from "../../../utils";
-import Loading from "../../Loading";
+import { sendDataDb } from "../../../../hooks";
+import { FormStepButtonsTypes } from "../../../../types"
+import { formatWppMessage } from "../../../../utils";
+import Loading from "../../../Loading";
 import { useState } from "react";
 
 export const FormCompleted = ({ prevFormStep, currentStep }: FormStepButtonsTypes) => {
@@ -31,7 +31,7 @@ export const FormCompleted = ({ prevFormStep, currentStep }: FormStepButtonsType
   }
 
   return (
-    <FormStyled style={currentStep == nStep.steps - 1 ? {} : { display: 'none' }}>
+    <FormStyled style={currentStep == formStepsActivation.steps - 1 ? {} : { display: 'none' }}>
       <h6>Verifique as informações</h6>
       <div className="wppMessage">
         <span style={{ whiteSpace: "pre-line" }}>

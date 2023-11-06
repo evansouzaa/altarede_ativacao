@@ -1,10 +1,10 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useState } from "react";
-import { useFormData } from "../../../context/formContext";
+import { useFormData } from "../../../../context/formContext";
 import { FormButtonNav } from "../FormButtonsNav";
 import { FormStyled } from "../styles";
-import { formConfig } from "../../../config/config";
-import { FormStepTypes, FormValuesType } from "../../../types";
+import { formConfig } from "../../../../config/config";
+import { FormStepTypes, FormValuesType } from "../../../../types";
 
 export const FormClient = ({ nextFormStep, prevFormStep, currentStep, orderStep }: FormStepTypes) => {
 
