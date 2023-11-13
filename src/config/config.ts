@@ -3,7 +3,7 @@ import { calcGeolocationDistance } from "../utils"
 export const formConfig = {
     planos: [
         { nome: "SOCIAL 60MB", qtd_roteador: 0, ont_wifi: false },
-        { nome: "FIBER 350MB", qtd_roteador: 0, wifont_wifii: false },
+        { nome: "FIBER 350MB", qtd_roteador: 0, ont_wifi: false },
         { nome: "FIBER+ 500MB WIFI 5", qtd_roteador: 1, ont_wifi: false },
         { nome: "FIBER+ 500MB WIFI 5 (ONT WIFI)", qtd_roteador: 0, ont_wifi: true },
         { nome: "500 MEGA SUPER WIFI 5 X2", qtd_roteador: 2, ont_wifi: false },
@@ -18,6 +18,7 @@ export const formConfig = {
         { modelo: "HG8310M", sn_prefix: "48575443", ont_wifi: false },
         { modelo: "EG8010H", sn_prefix: "48575443", ont_wifi: false },
         { modelo: "DM985", sn_prefix: "DACM", ont_wifi: false },
+        { modelo: "XZ000-G7", sn_prefix: "54504C47", ont_wifi: false },
         { modelo: "EG8145V5-V2", sn_prefix: "48575443", ont_wifi: true },
         { modelo: "HG8045H", sn_prefix: "48575443", ont_wifi: true },
         { modelo: "HG8245Q2", sn_prefix: "48575443", ont_wifi: true },
