@@ -50,8 +50,6 @@ export const FormInventoryNetwork = ({
   const ontWifiList = formConfig.modelo_ont.filter(item => item.ont_wifi === true)
   const ontBridgeList = formConfig.modelo_ont.filter(item => item.ont_wifi === false)
 
-  console.log(inputValue)
-
   return (
     <FormStyled
       onSubmit={handleSubmit(onSubmit)}
