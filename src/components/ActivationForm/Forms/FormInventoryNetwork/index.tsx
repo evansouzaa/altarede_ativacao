@@ -50,6 +50,8 @@ export const FormInventoryNetwork = ({
   const ontWifiList = formConfig.modelo_ont.filter(item => item.ont_wifi === true)
   const ontBridgeList = formConfig.modelo_ont.filter(item => item.ont_wifi === false)
 
+  console.log(inputValue)
+
   return (
     <FormStyled
       onSubmit={handleSubmit(onSubmit)}
@@ -96,7 +98,7 @@ export const FormInventoryNetwork = ({
           placeholder='Somente 8 ultimos caracteres'
           id='serial_ont'
           {...register("network_actives.serial_ont", {
-            pattern: /\b[0-9A-F]+\b/,
+            pattern: /[0-9A-Fa-f]{8}$/,
             setValueAs: value => prefix + value
           })}
           maxLength={8}
