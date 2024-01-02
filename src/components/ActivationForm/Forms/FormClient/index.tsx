@@ -35,6 +35,15 @@ export const FormClient = ({ nextFormStep, prevFormStep, currentStep, orderStep 
     nextFormStep()
   }
 
+  const loginErrorValidate = () => {
+    const login_prefix = JSON.parse(localStorage.getItem("login_prefix") || '')
+    if(login_prefix[0] === "ERROR" || login_prefix[0] === ""){
+      alert("Não permitido! Atualize o app ou a página!")
+      return false
+    }
+    return true
+  };
+
   return (
     <FormStyled
       onSubmit={handleSubmit(onSubmit)}
@@ -63,7 +72,9 @@ export const FormClient = ({ nextFormStep, prevFormStep, currentStep, orderStep 
           placeholder='Digite o login'
           minLength={12}
           id='login'
-          {...register("client.login")}
+          {...register("client.login", {
+            validate: loginErrorValidate
+          })}
           required
         />
       </div>
