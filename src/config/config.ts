@@ -136,6 +136,7 @@ export function getPosition(): Promise<any> {
 //get position and calculate distance to stations
 getPosition().then((position) => {
     //calc distance station
+
     //const distances = calcGeolocationDistance(-22.517033371269164, -41.92475390556813)
     const distances = calcGeolocationDistance(position.coords.latitude, position.coords.longitude)
 

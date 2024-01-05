@@ -9,13 +9,14 @@ import { FormStepTypes, FormValuesType } from "../../../../types";
 export const FormClient = ({ nextFormStep, prevFormStep, currentStep, orderStep }: FormStepTypes) => {
 
   const [loginPrefix] = useState(() => {
-    const storedData = localStorage.getItem("login_prefix" || "")
+    const storedData = localStorage.getItem("login_prefix")
     if (storedData) {
       const parsedData = JSON.parse(storedData);
       if (parsedData) {
         return parsedData[parsedData.length - 1].match(/^[A-Z]*/)
       }
     }
+    return
   })
 
   const { register, handleSubmit } = useForm({
@@ -37,7 +38,7 @@ export const FormClient = ({ nextFormStep, prevFormStep, currentStep, orderStep 
 
   const loginErrorValidate = () => {
     const login_prefix = JSON.parse(localStorage.getItem("login_prefix") || '')
-    if(login_prefix[0] === "ERROR" || login_prefix[0] === ""){
+    if (login_prefix[0] === "ERROR" || login_prefix[0] === "") {
       alert("Não permitido! Atualize o app ou a página!")
       return false
     }
