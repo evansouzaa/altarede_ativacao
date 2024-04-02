@@ -1,25 +1,27 @@
-import { useForm, SubmitHandler } from "react-hook-form";
+import { useForm, SubmitHandler, useWatch } from "react-hook-form";
 import { useState } from "react";
 import { useFormData } from "../../../../context/formContext";
 import { FormButtonNav } from "../FormButtonsNav";
 import { FormStyled } from "../styles";
 import { formConfig } from "../../../../config/config";
 import { FormStepTypes, FormValuesType } from "../../../../types";
+import { toast } from "react-toastify";
 
 export const FormClient = ({ nextFormStep, prevFormStep, currentStep, orderStep }: FormStepTypes) => {
 
   const [loginPrefix] = useState(() => {
-    const storedData = localStorage.getItem("login_prefix")
+    let storedData = localStorage.getItem("login_prefix")
+    while (!storedData) storedData = localStorage.getItem("login_prefix")
     if (storedData) {
       const parsedData = JSON.parse(storedData);
       if (parsedData) {
-        return parsedData[parsedData.length - 1].match(/^[A-Z]*/)
+        return parsedData[0]
       }
     }
     return
   })
 
-  const { register, handleSubmit } = useForm({
+  const { register, handleSubmit, control } = useForm({
     defaultValues: {
       client: {
         nome: "",
@@ -36,10 +38,13 @@ export const FormClient = ({ nextFormStep, prevFormStep, currentStep, orderStep 
     nextFormStep()
   }
 
+  const prefixWatch = useWatch({ control, name: "client.login" })
   const loginErrorValidate = () => {
-    const login_prefix = JSON.parse(localStorage.getItem("login_prefix") || '')
-    if (login_prefix[0] === "ERROR" || login_prefix[0] === "") {
-      alert("Não permitido! Atualize o app ou a página!")
+    if (!prefixWatch.includes(loginPrefix) || prefixWatch.length < 5) {
+      toast.error("Falha no prefixo, atualizando...")
+      setTimeout(() => {
+        window.location.reload()
+      }, 3000)
       return false
     }
     return true

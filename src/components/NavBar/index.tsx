@@ -53,6 +53,9 @@ export const NavBar = () => {
                                     <NavDropdown.Item disabled={true}>Sobre</NavDropdown.Item>
                                 </LinkContainer>
                             </NavDropdown>
+                            <LinkContainer to="/login">
+                                <Nav.Link disabled={true} >Login</Nav.Link>
+                            </LinkContainer>
                         </Nav>
                     </Offcanvas.Body>
                 </Navbar.Offcanvas>

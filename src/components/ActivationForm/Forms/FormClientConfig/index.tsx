@@ -117,6 +117,16 @@ export const FormClientConfig = ({ nextFormStep, prevFormStep, currentStep, orde
             />
             <label className="form-check-label" htmlFor="mudanca_endereco">Mudança Endereço</label>
           </div>
+
+          <div className="col-6 form-check form-switch">
+            <input
+              className="form-check-input"
+              type="checkbox"
+              id="mudanca_plano"
+              {...register("client_config.mudanca_plano")}
+            />
+            <label className="form-check-label" htmlFor="mudanca_plano">Mudança Plano</label>
+          </div>
         </div>
 
       </div>

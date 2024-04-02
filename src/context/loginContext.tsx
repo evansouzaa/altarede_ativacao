@@ -1,15 +1,15 @@
 import { useState, createContext, useContext } from "react";
-import { ChildrenPropsType, FormValuesType } from "../types"
+import { ChildrenPropsType, LoginValuesType } from "../types"
 
 //create context and use object to default value
 //* not correctly use <any> as type, but i don't understand how use type in createContext on this case. :/
-export const FormContext = createContext<any>({});
+export const LoginContext = createContext<any>({});
 
-export default function FormProvider({ children }: ChildrenPropsType) {
+export default function LoginProvider({ children }: ChildrenPropsType) {
   //create state an function to set values of forms
   const [data, setData] = useState({});
 
-  function setFormValues(values: FormValuesType) {
+  function setLoginValues(values: LoginValuesType) {
     setData((prevValues) => ({
       ...prevValues,
       ...values,
@@ -17,11 +17,11 @@ export default function FormProvider({ children }: ChildrenPropsType) {
   }
 
   return (
-    <FormContext.Provider value={{ data, setFormValues }}>
+    <LoginContext.Provider value={{ data, setLoginValues }}>
       {children}
-    </FormContext.Provider>
+    </LoginContext.Provider>
   );
 }
 
 //shortcut to use data inside contextForm
-export const useFormData = () => useContext(FormContext);
+export const useLoginData = () => useContext(LoginContext);

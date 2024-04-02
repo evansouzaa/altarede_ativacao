@@ -141,6 +141,7 @@ getPosition().then((position) => {
     const distances = calcGeolocationDistance(position.coords.latitude, position.coords.longitude)
 
     if (distances.length == 0) {
+
         alert("Fora da área de cobertura... ")
         alert("Verifique sua localização!")
 
@@ -151,14 +152,17 @@ getPosition().then((position) => {
         //set login_prefix false
         formConfig.login_prefix = ["ERROR"]
         localStorage.setItem('login_prefix', JSON.stringify(formConfig.login_prefix))
+
     } else {
+
         //set station
         formConfig.estacao = distances.map(element => element.name)
         localStorage.setItem('estacao', JSON.stringify(formConfig.estacao))
 
         //set login_prefix
-        formConfig.login_prefix = distances.map(element => element.name)
+        formConfig.login_prefix = distances.map(element => element.name.split("-")[0])
         localStorage.setItem('login_prefix', JSON.stringify(formConfig.login_prefix))
+
     }
 })
     .catch((err) => {

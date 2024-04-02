@@ -24,6 +24,14 @@ export type ChildrenPropsType = {
   children: ReactNode
 }
 
+
+export type LoginValuesType = {
+  name: string,
+  email: string,
+  password: string
+}
+
+
 export type FormValuesType = {
     client?: {
       nome: string,
@@ -66,7 +74,8 @@ export type FormValuesType = {
       desmembrar_wifi5: boolean,
       tecnicos: string,
       obs: string,
-      mudanca_endereco: boolean
+      mudanca_endereco: boolean,
+      mudanca_plano: boolean
     },
     position?: {
       lat: number,
@@ -109,6 +118,7 @@ export type MessageWppTypes = {
       cordao_apc_upc: number
     },
     client_config: {
+      mudanca_plano: number
       client_ssid: string,
       client_pass: string,
       client_ipv6: boolean,

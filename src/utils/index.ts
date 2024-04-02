@@ -14,8 +14,9 @@ export const formatWppMessage = (data: MessageWppTypes) => {
 
     const messageList = []
 
-    messageList.push(`⚠ Ativação Ont ⚠`)
-    client_config.mudanca_endereco && messageList.push(`⛔ Mudança endereço ⛔`)
+    messageList.push(`⚠ Ativação Onu/Ont ⚠`)
+    client_config.mudanca_endereco && messageList.push(`⛔ Mudança de Endereço ⛔`)
+    client_config.mudanca_plano && messageList.push(`🔄 Mudança de Plano 🔄`)   
 
     messageList.push(`=== Informações do Cliente ===`)
     client.nome && messageList.push(`*Nome:* ${client.nome}`)
