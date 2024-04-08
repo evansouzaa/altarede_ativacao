@@ -155,8 +155,10 @@ getPosition().then((position) => {
 
     } else {
 
-        //set station
-        formConfig.estacao = distances.map(element => element.name)
+        const newDistanceSort = distances.sort((a, b) => a.distance - b.distance);
+
+        formConfig.estacao = newDistanceSort.map(element => element.name)
+
         localStorage.setItem('estacao', JSON.stringify(formConfig.estacao))
 
         //set login_prefix
