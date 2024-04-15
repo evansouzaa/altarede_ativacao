@@ -66,7 +66,7 @@ export const formatWppMessage = (data: MessageWppTypes) => {
     position && messageList.push(`*Lat, Lng:* ${position.lat + ", " + position.lng}`)
 
     client_config.contrato && messageList.push(``)
-    client_config.contrato && messageList.push(`*Contrato confirmado e baixado por: * ${client_config.tecnicos}`)
+    client_config.contrato && messageList.push(`*Contrato confirmado e baixado por:* ${client_config.tecnicos}`)
 
     let messageComplete = ""
     messageList.forEach((item) => {
