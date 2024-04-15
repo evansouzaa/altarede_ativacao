@@ -30,6 +30,13 @@ export const FormClientConfig = ({ nextFormStep, prevFormStep, currentStep, orde
 
   const [presetRouter, setPresetRouter] = useState(false)
 
+  const [wifiName, setWifiName] = useState("")
+
+  const handleInputChange = (event: any) => {
+    const newValue = event.target.value.replace(/[^a-zA-Z0-9\s]/g, '');
+    setWifiName(newValue);
+  }
+
   return (
     <FormStyled
       onSubmit={handleSubmit(onSubmit)}
@@ -40,36 +47,91 @@ export const FormClientConfig = ({ nextFormStep, prevFormStep, currentStep, orde
 
       {(ontWifiFormControl || router_wifiFormControl && presetRouter) && (
         <div>
-          <label htmlFor="client_ssid">SSiD</label>
+          <label htmlFor="client_ssid">Nome Wi-Fi</label>
           <input
             className="form-control"
             type="text"
-            placeholder="Digite o SSiD"
+            placeholder="Digite o nome da Wi-Fi"
             id="client_ssid"
+            required
+            value={wifiName}
+            onInput={handleInputChange}
+            maxLength={30}
             {...register("client_config.client_ssid")}
           />
-        </div>
-      )}
-
-      {(ontWifiFormControl || router_wifiFormControl && presetRouter) && (
-        <div>
           <label htmlFor="client_pass">Senha</label>
           <input
             className="form-control"
             type="text"
-            placeholder='Digite a senha'
+            placeholder='Digite a senha Wi-fi do cliente'
             id='client_pass'
-            {...register("client_config.client_pass")}
+            required
             minLength={8}
+            maxLength={32}
+            {...register("client_config.client_pass")}
           />
+          <div className="row">
+            <div className="col">
+              <label htmlFor="wifi4_channel">Canal Wi-Fi 4</label>
+              <select
+                className="form-control"
+                id='wifi4_channel'
+                {...register("client_config.wifi4_channel")}
+                required
+              >
+                <option value="">Selecione...</option>
+                <option value="1">1</option>
+                <option value="6">6</option>
+                <option value="11">11</option>
+              </select>
+            </div>
+            <div className="col">
+              <label htmlFor="wifi5_channel">Canal Wi-Fi 5</label>
+              <select
+                className="form-control"
+                id='wifi5_channel'
+                {...register("client_config.wifi5_channel")}
+                required
+              >
+                <option value="">Selecione...</option>
+                <option value="0">Auto</option>
+                <option value="36">36</option>
+                <option value="40">40</option>
+                <option value="44">44</option>
+                <option value="48">48</option>
+                <option value="52">52 (DFS)</option>
+                <option value="56">56 (DFS)</option>
+                <option value="60">60 (DFS)</option>
+                <option value="64">64 (DFS)</option>
+                <option value="100">100 (DFS)</option>
+                <option value="104">104 (DFS)</option>
+                <option value="108">108 (DFS)</option>
+                <option value="112">112 (DFS)</option>
+                <option value="116">116 (DFS)</option>
+                <option value="120">120 (DFS)</option>
+                <option value="124">124 (DFS)</option>
+                <option value="128">128 (DFS)</option>
+                <option value="132">132 (DFS)</option>
+                <option value="136">136 (DFS)</option>
+                <option value="140">140 (DFS)</option>
+                <option value="144">144 (DFS)</option>
+                <option value="149">149</option>
+                <option value="153">153</option>
+                <option value="157">157</option>
+                <option value="161">161</option>
+              </select>
+            </div>
+          </div>
+
         </div>
       )}
+
 
       <br />
 
       <div className="row justify-content-center mx-1">
         <div className="row">
-          <div className="col-6 form-check form-switch">
+          {/* <div className="col-6 form-check form-switch">
             <input
               className="form-check-input"
               type="checkbox"
@@ -77,7 +139,7 @@ export const FormClientConfig = ({ nextFormStep, prevFormStep, currentStep, orde
               {...register("client_config.client_ipv6")}
             />
             <label className="form-check-label" htmlFor="ipv6">IPV6</label>
-          </div>
+          </div> */}
 
           {router_wifiFormControl && (
             <div className="col-6 form-check form-switch">
@@ -135,9 +197,14 @@ export const FormClientConfig = ({ nextFormStep, prevFormStep, currentStep, orde
 
       <div>
         <label htmlFor="tecnicos">Técnicos</label>
-        <input className="form-control"
-          type="text" placeholder="Nome do(s) técnicos"
-          id="tecnicos" {...register("client_config.tecnicos")} />
+        <input
+          className="form-control"
+          type="text"
+          placeholder="Nome do(s) técnicos"
+          id="tecnicos"
+          required
+          {...register("client_config.tecnicos")}
+        />
       </div>
 
       <div>

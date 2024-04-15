@@ -1,6 +1,6 @@
 export const formStepsActivation = {
     startStep: 0,
-    steps: 7
+    steps: 6
 }
 
 export const formStepsChangeOnt = {

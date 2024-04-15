@@ -1,6 +1,6 @@
 import { useState } from "react";
 import FormProvider from "../../../context/formContext";
-import { FormClient, FormDocNetwork, FormInventoryNetwork, FormCompleted, FormMaterialUsed, FormClientConfig, FormLocation } from '../Forms';
+import { FormClient, FormDocNetwork, FormInventoryNetwork, FormCompleted, FormClientConfig, FormLocation } from '../Forms';
 import { FormCardContainer } from "./styles";
 
 import { FormCardTypes } from "../../../types";
@@ -36,23 +36,23 @@ export function FormCard({ children, nStep, startStep }: FormCardTypes) {
           currentStep={formStep}
           orderStep={2}
         />
-        <FormMaterialUsed
+        {/* <FormMaterialUsed
+          prevFormStep={prevFormStep}
+          nextFormStep={nextFormStep}
+          currentStep={formStep}
+          orderStep={3}
+        /> */}
+        <FormClientConfig
           prevFormStep={prevFormStep}
           nextFormStep={nextFormStep}
           currentStep={formStep}
           orderStep={3}
         />
-        <FormClientConfig
-          prevFormStep={prevFormStep}
-          nextFormStep={nextFormStep}
-          currentStep={formStep}
-          orderStep={4}
-        />
         <FormLocation
           prevFormStep={prevFormStep}
           nextFormStep={nextFormStep}
           currentStep={formStep}
-          orderStep={5}
+          orderStep={4}
         ></FormLocation>
         <FormCompleted
           prevFormStep={prevFormStep}

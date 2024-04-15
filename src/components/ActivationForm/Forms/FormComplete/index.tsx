@@ -8,26 +8,40 @@ import { FormStepButtonsTypes } from "../../../../types"
 import { formatWppMessage } from "../../../../utils";
 import Loading from "../../../Loading";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 export const FormCompleted = ({ prevFormStep, currentStep }: FormStepButtonsTypes) => {
 
-  const { data } = useFormData()
+  const { data, setFormValues } = useFormData()
 
   const [LoadingStatus, setLoadinStatus] = useState(true)
 
+  const [statusConfirm, setStatusConfirm] = useState(false)
+
   const handleButton = () => {
-    //enable loading
+
     setLoadinStatus(false)
 
-    sendDataDb(data).then(function (response) {
-      if (response.error) {
+    data.client_config.contrato = statusConfirm
+
+    setFormValues(data)
+
+    sendDataDb(data)
+      .then(function (response) {
+        if (response.error == false) {
+          //format whatsapp message
+          const wppMessage = formatWppMessage(data)
+          setLoadinStatus(true)
+          window.location.href = `https://wa.me/?text=${encodeURIComponent(wppMessage)}`;
+          return
+        }
+      }).catch((e) => {
         setLoadinStatus(true)
-        alert("Erro! Tente novamente ou atualize a pagina!")
-      }
-      //format whatsapp message
-      const wppMessage = formatWppMessage(data)
-      window.location.href = `https://wa.me/?text=${encodeURIComponent(wppMessage)}`;
-    })
+        toast.error("Algo deu errado")
+        toast.warning("Verifique sua conexão")
+        //setTimeout(() => window.location.reload(), 4000)
+        return
+      })
   }
 
   return (
@@ -38,14 +52,27 @@ export const FormCompleted = ({ prevFormStep, currentStep }: FormStepButtonsType
           {"position" in data && `${formatWppMessage(data).replaceAll("*", "")}`}
         </span>
       </div>
-      <Button
-        variant="danger"
-        onClick={handleButton}
-        className="btn-send-active"
-        size="sm"
-      >
-        Solicitar Ativação
-      </Button>
+      <div className="col d-flex flex-column align-items-center p-2">
+        <div className="form-check form-switch">
+          <label className="form-check-label" htmlFor="statusConfirm">Contrato Baixado?</label>
+          <input
+            className="form-check-input"
+            type="checkbox"
+            id="statusConfirm"
+            onChange={e => setStatusConfirm(e.target.checked)}
+          />
+        </div>
+        <Button
+          variant="danger"
+          onClick={handleButton}
+          className="btn-send-active mt-2" // Adiciona uma margem superior para separar o botão do switch
+          size="sm"
+          disabled={!statusConfirm}
+        >
+          Solicitar Ativação
+        </Button>
+      </div>
+
       <FormButtonNav currentStep={currentStep} prevFormStep={prevFormStep} />
       <Loading status={LoadingStatus}></Loading>
     </FormStyled>

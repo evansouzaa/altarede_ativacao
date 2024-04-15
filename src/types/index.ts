@@ -104,7 +104,7 @@ export type MessageWppTypes = {
       serial_roteador_2: string,
       serial_roteador_3: string
     },
-    material_used: {
+    material_usedz: {
       fibra: number,
       alca: number,
       nylon: number,
@@ -118,6 +118,8 @@ export type MessageWppTypes = {
       cordao_apc_upc: number
     },
     client_config: {
+      wifi5_channel: number
+      wifi4_channel: number
       mudanca_plano: number
       client_ssid: string,
       client_pass: string,
@@ -126,7 +128,8 @@ export type MessageWppTypes = {
       desmembrar_wifi5: boolean,
       tecnicos: string,
       obs: string,
-      mudanca_endereco: boolean
+      mudanca_endereco: boolean,
+      contrato: boolean
     },
     position?: {
       lat: number,

@@ -7,7 +7,7 @@ export const formatWppMessage = (data: MessageWppTypes) => {
         client,
         network_doc,
         network_actives,
-        material_used,
+        //material_used,
         client_config,
         position
     } = data
@@ -16,7 +16,7 @@ export const formatWppMessage = (data: MessageWppTypes) => {
 
     messageList.push(`⚠ Ativação Onu/Ont ⚠`)
     client_config.mudanca_endereco && messageList.push(`⛔ Mudança de Endereço ⛔`)
-    client_config.mudanca_plano && messageList.push(`🔄 Mudança de Plano 🔄`)   
+    client_config.mudanca_plano && messageList.push(`🔄 Mudança de Plano 🔄`)
 
     messageList.push(`=== Informações do Cliente ===`)
     client.nome && messageList.push(`*Nome:* ${client.nome}`)
@@ -38,30 +38,35 @@ export const formatWppMessage = (data: MessageWppTypes) => {
     network_actives.serial_roteador_2 ? messageList.push(`*Serial Roteador 2:* ${network_actives.serial_roteador_2}`) : ""
     network_actives.serial_roteador_3 ? messageList.push(`*Serial Roteador 3:* ${network_actives.serial_roteador_3}`) : ""
 
-    messageList.push(`=== Material Utilizado ===`)
-    material_used.fibra ? messageList.push(`*Fibra:* ${material_used.fibra}`) : ""
-    material_used.alca ? messageList.push(`*Alça:* ${material_used.alca}`) : ""
-    material_used.nylon ? messageList.push(`*Nylon:* ${material_used.nylon}`) : ""
-    material_used.pto ? messageList.push(`*Pto:* ${material_used.pto}`) : ""
-    material_used.cabo_utp ? messageList.push(`*Cabo Utp:* ${material_used.cabo_utp}`) : ""
-    material_used.fixa_fio ? messageList.push(`*Fixa Fio:* ${material_used.fixa_fio}`) : ""
-    material_used.conector_rj45 ? messageList.push(`*Conec. RJ45:* ${material_used.conector_rj45}`) : ""
-    material_used.conector_apc ? messageList.push(`*Conec. APC:* ${material_used.conector_apc}`) : ""
-    material_used.conector_upc ? messageList.push(`*Conec. UPC:* ${material_used.conector_upc}`) : ""
-    material_used.cordao_apc_apc ? messageList.push(`*Cord. APC/APC:* ${material_used.cordao_apc_apc}`) : ""
-    material_used.cordao_apc_upc ? messageList.push(`*Cord. APC/UPC:* ${material_used.cordao_apc_upc}`) : ""
+    // messageList.push(`=== Material Utilizado ===`)
+    // material_used.fibra ? messageList.push(`*Fibra:* ${material_used.fibra}`) : ""
+    // material_used.alca ? messageList.push(`*Alça:* ${material_used.alca}`) : ""
+    // material_used.nylon ? messageList.push(`*Nylon:* ${material_used.nylon}`) : ""
+    // material_used.pto ? messageList.push(`*Pto:* ${material_used.pto}`) : ""
+    // material_used.cabo_utp ? messageList.push(`*Cabo Utp:* ${material_used.cabo_utp}`) : ""
+    // material_used.fixa_fio ? messageList.push(`*Fixa Fio:* ${material_used.fixa_fio}`) : ""
+    // material_used.conector_rj45 ? messageList.push(`*Conec. RJ45:* ${material_used.conector_rj45}`) : ""
+    // material_used.conector_apc ? messageList.push(`*Conec. APC:* ${material_used.conector_apc}`) : ""
+    // material_used.conector_upc ? messageList.push(`*Conec. UPC:* ${material_used.conector_upc}`) : ""
+    // material_used.cordao_apc_apc ? messageList.push(`*Cord. APC/APC:* ${material_used.cordao_apc_apc}`) : ""
+    // material_used.cordao_apc_upc ? messageList.push(`*Cord. APC/UPC:* ${material_used.cordao_apc_upc}`) : ""
 
     messageList.push(`=== Configurações do Cliente ===`)
-    client_config.client_ssid && messageList.push(`*SSiD:* ${client_config.client_ssid}`)
+    client_config.client_ssid && messageList.push(`*Nome Wi-fi:* ${client_config.client_ssid}`)
     client_config.client_pass && messageList.push(`*Senha:* ${client_config.client_pass}`)
+    client_config.wifi4_channel && messageList.push(`*Canal Wi-fi 4:* ${client_config.wifi4_channel}`)
+    client_config.wifi5_channel && messageList.push(`*Canal Wi-fi 5:* ${client_config.wifi5_channel}`)
     client_config.client_ipv6 && messageList.push(`*Ipv6:* Sim`)
     client_config.roteador_preset && messageList.push(`*Roteador Preset:* Sim`)
-    client_config.desmembrar_wifi5 && messageList.push(`*Desmembrar Wifi 5:* Sim`)
+    client_config.desmembrar_wifi5 && messageList.push(`*Desmembrar Wi-fi 5:* Sim`)
     client_config.obs && messageList.push(`*Observações:* ${client_config.obs}`)
     client_config.tecnicos && messageList.push(`*Técnicos:* ${client_config.tecnicos}`)
 
     messageList.push(`=== Localização ===`)
     position && messageList.push(`*Lat, Lng:* ${position.lat + ", " + position.lng}`)
+
+    client_config.contrato && messageList.push(``)
+    client_config.contrato && messageList.push(`*Contrato confirmado e baixado por: * ${client_config.tecnicos}`)
 
     let messageComplete = ""
     messageList.forEach((item) => {
