@@ -16,13 +16,9 @@ export const FormCompleted = ({ prevFormStep, currentStep }: FormStepButtonsType
 
   const [LoadingStatus, setLoadinStatus] = useState(true)
 
-  const [statusConfirm, setStatusConfirm] = useState(false)
-
   const handleButton = () => {
 
     setLoadinStatus(false)
-
-    data.client_config.contrato = statusConfirm
 
     setFormValues(data)
 
@@ -35,6 +31,7 @@ export const FormCompleted = ({ prevFormStep, currentStep }: FormStepButtonsType
           window.location.href = `https://wa.me/?text=${encodeURIComponent(wppMessage)}`;
           return
         }
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
       }).catch((e) => {
         setLoadinStatus(true)
         toast.error("Algo deu errado")
@@ -53,21 +50,14 @@ export const FormCompleted = ({ prevFormStep, currentStep }: FormStepButtonsType
         </span>
       </div>
       <div className="col d-flex flex-column align-items-center p-2">
-        <div className="form-check form-switch">
-          <label className="form-check-label" htmlFor="statusConfirm">Contrato Baixado?</label>
-          <input
-            className="form-check-input"
-            type="checkbox"
-            id="statusConfirm"
-            onChange={e => setStatusConfirm(e.target.checked)}
-          />
+        <div>
+          <p className="text-danger font-italic"><b>*Imprescindível baixar o contrato após a instalação!</b></p>
         </div>
         <Button
           variant="danger"
           onClick={handleButton}
           className="btn-send-active mt-2" // Adiciona uma margem superior para separar o botão do switch
           size="sm"
-          disabled={!statusConfirm}
         >
           Solicitar Ativação
         </Button>
