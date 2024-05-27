@@ -20,6 +20,7 @@ export const formConfig = {
         { modelo: "DM985", sn_prefix: "DACM", ont_wifi: false },
         { modelo: "XZ000-G7", sn_prefix: "54504C47", ont_wifi: false },
         { modelo: "EG8145V5-V2", sn_prefix: "48575443", ont_wifi: true },
+        { modelo: "XC220-G3", sn_prefix: "54504C47", ont_wifi: true },
         { modelo: "HG8045H", sn_prefix: "48575443", ont_wifi: true },
         { modelo: "HG8245Q2", sn_prefix: "48575443", ont_wifi: true },
         { modelo: "EG8145X6", sn_prefix: "48575443", ont_wifi: true }
