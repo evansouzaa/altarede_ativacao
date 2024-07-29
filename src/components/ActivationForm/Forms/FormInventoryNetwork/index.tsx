@@ -100,7 +100,6 @@ export const FormInventoryNetwork = ({
             setValueAs: value => prefix + value
           })}
           maxLength={8}
-          minLength={8}
           value={inputValue}
           onChange={handleInputChange}
           required />
