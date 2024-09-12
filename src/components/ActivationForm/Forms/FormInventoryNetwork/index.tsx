@@ -95,13 +95,13 @@ export const FormInventoryNetwork = ({
           type="text"
           placeholder='Somente 8 ultimos caracteres'
           id='serial_ont'
-          {...register("network_actives.serial_ont", {
-            pattern: /[0-9A-Fa-f]{8}$/,
-            setValueAs: value => prefix + value
-          })}
           maxLength={8}
           minLength={8}
+          pattern="[0-9A-Fa-f]{8}"
           value={inputValue}
+          {...register("network_actives.serial_ont", {
+            setValueAs: value => prefix + value
+          })}
           onChange={handleInputChange}
           required />
       </div>
