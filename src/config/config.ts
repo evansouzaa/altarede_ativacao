@@ -51,6 +51,11 @@ export const estacoesConfig = [
         lat: -22.392055949152912,
         long: -43.13089733638718
     },
+    {
+        name: "PTS-EST4",
+        lat: -22.491651844723698,
+        long: -43.15768843107088
+    },
     //TRL
     {
         name: "TRL-EST1",
