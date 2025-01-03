@@ -21,15 +21,15 @@ export const formConfig = {
         { modelo: "XZ000-G7", sn_prefix: "54504C47", ont_wifi: false },
         { modelo: "EG8145V5-V2", sn_prefix: "48575443", ont_wifi: true },
         { modelo: "XC220-G3", sn_prefix: "54504C47", ont_wifi: true },
-        { modelo: "HG8045H", sn_prefix: "48575443", ont_wifi: true },
-        { modelo: "HG8245Q2", sn_prefix: "48575443", ont_wifi: true },
+        // { modelo: "HG8045H", sn_prefix: "48575443", ont_wifi: true },
+        // { modelo: "HG8245Q2", sn_prefix: "48575443", ont_wifi: true },
         { modelo: "EG8145X6", sn_prefix: "48575443", ont_wifi: true }
     ],
     modelo_roteador: ["WS5200", "AX2", "AX3"],
     estacao: Array<string>(),
     login_prefix: Array<string>(),
     area: [...Array.from({ length: 128 }, (_, i) => `A${i + 1}`)],
-    cto: [...Array.from({ length: 24 }, (_, i) => i + 1)],
+    cto: [...Array.from({ length: 25 }, (_, i) => i + 1)],
     porta: [...Array.from({ length: 16 }, (_, i) => i + 1)],
     estacaoMaxDistance: 13, //max distance station to show options
 }
@@ -97,6 +97,11 @@ export const estacoesConfig = [
         name: "NOF-EST7",
         lat: -22.338611765484487,
         long: -42.512193576576095
+    },
+    {
+        name: "NOF-EST8",
+        lat: -22.281581835785776,
+        long: -42.50083117277325
     },
     //BJR
     {
