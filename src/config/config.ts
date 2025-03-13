@@ -103,6 +103,11 @@ export const estacoesConfig = [
         lat: -22.281581835785776,
         long: -42.50083117277325
     },
+    {
+        name: "NOF-EST9",
+        lat: -22.228948382370792,
+        long: -42.52039750421091
+    },
     //BJR
     {
         name: "BJR-EST1",
