@@ -3,6 +3,7 @@ import { calcGeolocationDistance } from "../utils"
 export const formConfig = {
     planos: [
         { nome: "SOCIAL 60MB", qtd_roteador: 0, ont_wifi: false },
+        { nome: "FIBER SOCIAL 250MB", qtd_roteador: 0, ont_wifi: false },
         { nome: "FIBER 350MB", qtd_roteador: 0, ont_wifi: false },
         { nome: "FIBER+ 500MB WIFI 5", qtd_roteador: 1, ont_wifi: false },
         { nome: "FIBER+ 500MB WIFI 5 (ONT WIFI)", qtd_roteador: 0, ont_wifi: true },
